@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mini task 15</title>
+</head>
+
+<body>
+    <textarea name="bioInput" id="bioInput" cols="15" rows="10" maxlength="50"></textarea>
+    <!-- <textarea maxlength="50" id="bioInput"> -->
+
+    </textarea>
+    <br><br>
+    <p id="charCount"></p>
+    <script>
+        const bioInput = document.getElementById('bioInput');
+        let char;
+        const charCount = document.getElementById('charCount');
+        bioInput.addEventListener('input', remaningText);
+        function remaningText() {
+            char = 200 - bioInput.value.length;
+            console.log(char);
+            charCount.innerHTML = `Characters remaining: ${char}`;
+        }
+    </script>
+</body>
+
+</html>

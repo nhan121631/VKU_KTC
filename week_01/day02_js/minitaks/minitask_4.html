@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>mini task 4</title>
+</head>
+<ol>
+    <li><button class="deleteBtn">Delete 1</button></li>
+    <li><button class="deleteBtn">Delete 2</button></li>
+    <li><button class="deleteBtn">Delete 3</button></li>
+    <li><button class="deleteBtn">Delete 4</button></li>
+</ol>
+<script>
+    document.querySelectorAll('.deleteBtn').forEach(button => {
+        button.addEventListener('click', function () {
+            const li = this.parentElement;
+            li.remove();
+        });
+    });
+</script>
+
+<body>
+
+</body>
+
+</html>

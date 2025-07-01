@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Minitask 12</title>
+</head>
+
+<body>
+    <p id="greetingText"></p>
+    <script>
+        const now = new Date();
+        const hours = now.getHours();
+        const greetingText = document.getElementById('greetingText');
+        let greeting;
+        if (hours < 12) {
+            greeting = "Good morning!";
+        } else if (hours < 18) {
+            greeting = "Good afternoon!";
+        } else {
+            greeting = "Good evening!";
+        }
+        window.onload = function () {
+            greetingText.innerHTML = greeting;
+        }
+    </script>
+</body>
+
+</html>

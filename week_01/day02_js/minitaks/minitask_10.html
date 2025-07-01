@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <input type="text" id="emailInput">
+    <button id="validateBtn">Check Email</button>
+    <br>
+    <div id="errorMessage"></div>
+    <script>
+        document.getElementById('validateBtn').addEventListener('click', validateEmail);
+
+        function validateEmail() {
+            const emailInput = document.getElementById('emailInput');
+            const checkEmail = "^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}$";
+            const emailPattern = new RegExp(checkEmail);
+            const errorMessage = document.getElementById('errorMessage');
+            if (emailPattern.test(emailInput.value)) {
+                errorMessage.innerText = "Success";
+            } else {
+                errorMessage.innerText = "Invalid email format";
+            }
+        }
+    </script>
+</body>
+
+</html>

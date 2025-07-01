@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>mini task 9</title>
+</head>
+
+<body>
+    <div id="clockDisplay"></div>
+    <script>
+        function updateTime() {
+            const clockDisplay = document.getElementById('clockDisplay');
+            const now = new Date();
+            const hours = now.getHours();
+            const minutes = now.getMinutes();
+            const seconds = now.getSeconds();
+            clockDisplay.innerHTML = `${hours}:${minutes}:${seconds}`;
+        }
+        setInterval(updateTime, 1000); 
+    </script>
+</body>
+
+</html>

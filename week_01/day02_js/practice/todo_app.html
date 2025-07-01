@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Todo App</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <script>
+        tailwind.config = {
+            darkMode: 'class'
+        };
+    </script>
+</head>
+
+<body class="bg-gray-100 text-gray-800 dark:bg-gray-900 dark:text-gray-100">
+    <div class="max-w-3xl mx-auto p-4 space-y-8">
+
+        <!-- ---------- Header ---------- -->
+        <header class="flex items-center justify-between p-4 bg-white dark:bg-gray-800 rounded-lg shadow">
+            <div>
+                <h1 id="greeting" class="text-xl font-semibold dark:text-white"></h1>
+                <span id="clock" class="text-sm text-gray-500 dark:text-gray-400"></span>
+            </div>
+            <button id="theme-toggle" class="text-2xl" title="Toggle theme">🌙</button>
+        </header>
+
+        <section class="bg-white dark:bg-gray-800 rounded-lg shadow p-4">
+            <h2 class="text-lg font-semibold mb-4 dark:text-white">To‑Do List</h2>
+            <form id="todo-form" class="flex gap-2 mb-3">
+                <input type="text" id="todo-input" placeholder="Add a task…" required
+                    class="flex-1 p-2 border rounded-md dark:bg-gray-700 dark:border-gray-600" />
+                <button type="submit" class="px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700">Add</button>
+            </form>
+            <div class="flex gap-2 mb-3">
+                <button type="button" data-filter="all"
+                    class="filter-btn px-3 py-1 border rounded border-blue-500 text-blue-500 hover:bg-blue-500 hover:text-white">All</button>
+                <button type="button" data-filter="active"
+                    class="filter-btn px-3 py-1 border rounded border-blue-500 text-blue-500 hover:bg-blue-500 hover:text-white">Active</button>
+                <button type="button" data-filter="completed"
+                    class="filter-btn px-3 py-1 border rounded border-blue-500 text-blue-500 hover:bg-blue-500 hover:text-white">Completed</button>
+            </div>
+            <ul id="todo-list" class="space-y-2"></ul>
+        </section>
+
+        <section class="bg-white dark:bg-gray-800 rounded-lg shadow p-4">
+            <h2 class="text-lg font-semibold mb-4">Sticky Notes</h2>
+            <form id="note-form" class="flex flex-col gap-2 mb-4">
+                <textarea id="note-input" maxlength="300" placeholder="Write a note…" required
+                    class="min-h-[80px] p-2 border rounded-md dark:bg-gray-700 dark:border-gray-600"></textarea>
+                <button type="submit" class="w-fit px-4 py-2 bg-yellow-500 text-white rounded hover:bg-yellow-600">Add
+                    Note</button>
+            </form>
+            <div id="notes-container" class="grid gap-4 sm:grid-cols-2 md:grid-cols-3"></div>
+        </section>
+    </div>
+    <script>
+        const body = document.body;
+        const clockEl = document.getElementById("clock");
+        const greetingEl = document.getElementById("greeting");
+        const themeToggle = document.getElementById("theme-toggle");
+
+        const todoForm = document.getElementById("todo-form");
+        const todoInput = document.getElementById("todo-input");
+        const todoList = document.getElementById("todo-list");
+        const filterButtons = document.querySelectorAll(".filter-btn");
+
+
+        const noteForm = document.getElementById("note-form");
+        const noteInput = document.getElementById("note-input");
+        const notesContainer = document.getElementById("notes-container");
+
+        let todos = JSON.parse(localStorage.getItem("todos") || "[]");
+        let notes = JSON.parse(localStorage.getItem("notes") || "[]");
+
+        let currentFilter = "all";
+
+
+        function updateClockAndGreeting() {
+            const now = new Date();
+            clockEl.textContent = now.toLocaleTimeString();
+
+            const hour = now.getHours();
+            let greeting = "Good evening";
+            if (hour >= 5 && hour < 12) greeting = "Good morning";
+            else if (hour >= 12 && hour < 18) greeting = "Good afternoon";
+            greetingEl.textContent = greeting;
+        }
+        updateClockAndGreeting();
+        setInterval(updateClockAndGreeting, 1000);
+
+        const savedTheme = localStorage.getItem("theme") || "light";
+        if (savedTheme === "dark") {
+            body.classList.add("dark");
+        }
+        updateThemeIcon();
+
+        themeToggle.addEventListener("click", () => {
+            body.classList.toggle("dark");
+            localStorage.setItem("theme", body.classList.contains("dark") ? "dark" : "light");
+            updateThemeIcon();
+        });
+        function updateThemeIcon() {
+            themeToggle.textContent = body.classList.contains("dark") ? "☀️" : "🌙";
+        }
+
+        todoForm.addEventListener("submit", addTodo);
+        function saveToDo() {
+            localStorage.setItem("todos", JSON.stringify(todos));
+        }
+        function addTodo(e) {
+            e.preventDefault();
+            const text = todoInput.value.trim();
+            if (!text) {
+                return
+            }
+            todos.push({ id: Date.now(), text, completed: false });
+            console.log(todos);
+            todoInput.value = "";
+            saveToDo();
+            readTodo();
+        }
+        function checkBoxTodo(id) {
+            const todo = todos.find((item) => item.id === id);
+            if (todo) {
+                todo.completed = !todo.completed;
+            }
+            saveToDo();
+            readTodo();
+        }
+        function deleteTodo(id) {
+            todos = todos.filter((t) => t.id !== id);
+            saveToDo();
+            readTodo();
+        }
+        filterButtons.forEach((btn) => {
+            btn.addEventListener("click", () => {
+                currentFilter = btn.dataset.filter;
+                filterButtons.forEach((b) => b.classList.remove("bg-blue-500", "text-white"));
+                btn.classList.add("bg-blue-500", "text-white");
+                readTodo();
+            });
+        });
+        function readTodo() {
+            todoList.innerHTML = "";
+            let todofilter = todos;
+            if (currentFilter === "active") todofilter = todos.filter((t) => !t.completed);
+            else if (currentFilter === "completed") todofilter = todos.filter((t) => t.completed);
+            todofilter.forEach((todo) => {
+                const li = document.createElement("li");
+                li.className = "flex items-center justify-between p-2 bg-gray-50 dark:bg-gray-700 rounded";
+
+                //li.textContent = todo.text;
+                const checkbox = document.createElement("input");
+                checkbox.type = "checkbox";
+                checkbox.checked = todo.completed;
+                checkbox.addEventListener("change", () => checkBoxTodo(todo.id));
+
+                const span = document.createElement("span");
+                span.textContent = todo.text;
+                if (todo.completed) {
+                    span.classList.add("line-through", "opacity-60");
+                }
+                const delBtn = document.createElement("button");
+                delBtn.textContent = "Delete";
+                delBtn.addEventListener("click", () => deleteTodo(todo.id));
+
+                li.append(checkbox, span, delBtn);
+                todoList.appendChild(li);
+            });
+        }
+
+        noteForm.addEventListener("submit", (e) => {
+            e.preventDefault();
+            const text = noteInput.value.trim();
+            if (!text) return;
+            notes.push({ id: Date.now(), text });
+            noteInput.value = "";
+            saveNotes();
+            readNote();
+        });
+
+        function deleteNote(id) {
+            notes = notes.filter((n) => n.id !== id);
+            saveNotes();
+            readNote();
+        }
+
+        function readNote() {
+            notesContainer.innerHTML = "";
+            notes.forEach((note) => {
+                const div = document.createElement("div");
+                div.className = "relative p-4 bg-yellow-100 dark:bg-yellow-200 rounded shadow";
+
+                const p = document.createElement("p");
+                p.textContent = note.text;
+
+                const delBtn = document.createElement("button");
+                delBtn.textContent = "X";
+                delBtn.className = "absolute top-1 right-1 text-sm hover:text-red-500";
+                delBtn.addEventListener("click", () => deleteNote(note.id));
+
+                div.append(p, delBtn);
+                notesContainer.appendChild(div);
+            });
+        }
+
+        function saveNotes() {
+            localStorage.setItem("notes", JSON.stringify(notes));
+        }
+
+        readNote();
+        readTodo();
+    </script>
+</body>
+
+</html>

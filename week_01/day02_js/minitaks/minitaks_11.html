@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>mini taks 11</title>
+</head>
+
+<body>
+    <p id="infoPara">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Tenetur ducimus quos, ex omnis
+        mollitia voluptates repudiandae dolore asperiores quia eius commodi ab modi voluptas incidunt libero, vero
+        maiores cum porro?</p>
+    <button id="hideParaBtn">Hide</button>
+    <script>
+        document.getElementById('hideParaBtn').addEventListener("click", hidePara);
+        function hidePara() {
+            const para = document.getElementById('infoPara');
+            para.style.display = "none";
+        }
+    </script>
+</body>
+
+</html>

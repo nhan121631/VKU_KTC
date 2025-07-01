@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mini task 8</title>
+</head>
+
+<body>
+    <div class="hoverBox">Change my color on hover!</div>
+    <script>
+        document.querySelector('.hoverBox').addEventListener('mouseover', function () {
+            this.style.backgroundColor = 'lightblue';
+        });
+        document.querySelector('.hoverBox').addEventListener('mouseout', function () {
+            this.style.backgroundColor = '';
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mini task 3</title>
+</head>
+
+<body>
+    <input type="text" name="itemInput" id="itemInput">
+    <button id="addItemBtn"> add</button>
+    <ul id="itemList">
+    </ul>
+    <script>
+        document.getElementById('addItemBtn').addEventListener('click', addItem);
+
+        function addItem() {
+            const itemInput = document.getElementById('itemInput');
+            const itemList = document.getElementById('itemList');
+            itemList.innerHTML += `<li> ${itemInput.value}</li>`;
+        }
+    </script>
+</body>
+
+</html>

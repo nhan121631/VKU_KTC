@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mini task 6</title>
+</head>
+
+<body>
+    <input type="text" name="usernameInput" id="usernameInput">
+    <button id="submitUsername">Submit</button>
+    <script>
+        document.getElementById('submitUsername').addEventListener('click', submitUsername);
+
+        function submitUsername() {
+            const userNameInput = document.getElementById('usernameInput');
+            alert(`Input: ${userNameInput.value}!`);
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>mini task 13</title>
+</head>
+
+<body>
+    <form action="">
+        <label for="name">Name:</label>
+        <input type="text" id="nameInput" name="name">
+        <button type=" submit">Submit</button>
+    </form>
+    <p id="nameError" style="width: 100px; height: 100px;"></p>
+    <script>
+        document.querySelector('form').addEventListener('submit', checkEmpty);
+        const nameError = document.getElementById('nameError');
+        function checkEmpty(event) {
+            event.preventDefault();
+            if (document.getElementById('nameInput').value === '') {
+                nameError.innerText = "Empty Name";
+                nameError.style.border = "solid red"; x1
+            } else {
+                nameError.innerText = "Success";
+                nameError.style.border = "solid green";
+            }
+        }
+    </script>
+</body>
+
+</html>

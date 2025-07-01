@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>minitask 14</title>
+</head>
+
+<body>
+    <button id="onceBtn">Disable</button>
+    <script>
+        document.getElementById('onceBtn').addEventListener('click', disableBtn)
+        function disableBtn() {
+            const btn = document.getElementById('onceBtn');
+            btn.disabled = true;
+            btn.innerText = "Disabled";
+        }
+    </script>
+</body>
+
+</html>

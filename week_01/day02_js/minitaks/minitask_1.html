@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mini task1</title>
+</head>
+
+<body>
+    <div id="textDisplay"></div>
+    <button id="changeTextBtn">Click</button>
+    <script>
+        document.getElementById('changeTextBtn').addEventListener('click', changeText);
+        function changeText() {
+            const textDisplay = document.getElementById('textDisplay');
+            textDisplay.innerHTML = "Hello, JavaScript!";
+        }
+    </script>
+</body>
+
+</html>
