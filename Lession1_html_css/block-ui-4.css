@@ -1,0 +1,177 @@
+:root {
+    --font-main: 'Roboto', sans-serif;
+    --color-bg: #f0f2f5;
+    --color-card: #fff;
+    --color-shadow: rgba(0, 0, 0, 0.05);
+    --color-photo-bg: #e0e0e0;
+    --color-name: #333;
+    --color-role: #888;
+    --color-details: #555;
+    --color-details-icon: #888;
+    --color-details-span: #333;
+    --color-contact: #fff;
+    --radius: 8px;
+    --shadow: 0 4px 8px var(--color-shadow);
+    --gap: 20px;
+    --padding-card: 20px;
+    --min-card: 250px;
+    --max-card: calc(25% - 15px);
+    --photo-height: 200px;
+    --user-info-padding: 15px 20px;
+    --user-name-size: 1.2em;
+    --user-role-size: 0.9em;
+    --user-details-size: 0.85em;
+    --user-contact-padding: 10px 20px;
+    --user-contact-size: 0.8em;
+    --icon-width: 5%;
+
+    --red-bg: #e74c3c;
+    --green-bg: #2ecc71;
+    --lightblue-bg: #3498db;
+    --blue-bg: #2c3e50;
+    --orange-bg: #f39c12;
+    --yellow-bg: #f1c40f;
+    --purple-bg: #9b59b6;
+    --pink-bg: #e91e63;
+}
+
+body {
+    font-family: var(--font-main);
+    background-color: var(--color-bg);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+    padding: 20px;
+}
+
+.container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: var(--gap);
+    max-width: 1200px;
+    width: 100%;
+}
+
+.card {
+    background-color: var(--color-card);
+    box-shadow: var(--shadow);
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    min-width: var(--min-card);
+    max-width: var(--max-card);
+}
+
+.user-photo {
+    width: 100%;
+    height: var(--photo-height);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--color-photo-bg);
+}
+
+.user-photo img {
+    width: 100%;
+    height: 100%;
+}
+
+.user-info {
+    padding: var(--user-info-padding);
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.user-name {
+    font-size: var(--user-name-size);
+    font-weight: 700;
+    color: var(--color-name);
+    margin: 10px 0 5px;
+    text-transform: uppercase;
+}
+
+.user-role {
+    font-size: var(--user-role-size);
+    color: var(--color-role);
+    margin-bottom: 15px;
+}
+
+.user-details {
+    text-align: left;
+    margin-bottom: 20px;
+    font-size: var(--user-details-size);
+    color: var(--color-details);
+}
+
+.user-details p {
+    margin: 8px 0;
+    display: flex;
+    align-items: center;
+}
+
+.user-details .icon {
+    color: var(--color-details-icon);
+    margin-right: 10px;
+    width: var(--icon-width);
+    text-align: center;
+}
+
+.user-details span {
+    font-weight: 600;
+    color: var(--color-details-span);
+    flex-grow: 6;
+    text-align: end;
+}
+
+.user-contact {
+    color: var(--color-contact);
+    padding: var(--user-contact-padding);
+    text-align: left;
+    margin-top: 5px;
+}
+
+.user-contact p {
+    margin: 5px 0;
+    font-size: var(--user-contact-size);
+    display: flex;
+    align-items: center;
+    word-break: break-word;
+}
+
+.user-contact .icon-white {
+    color: var(--color-contact);
+    margin-right: 10px;
+    width: var(--icon-width);
+    text-align: center;
+}
+
+.red-bg { background-color: var(--red-bg); }
+.green-bg { background-color: var(--green-bg); }
+.lightblue-bg { background-color: var(--lightblue-bg); }
+.blue-bg { background-color: var(--blue-bg); }
+.orange-bg { background-color: var(--orange-bg); }
+.yellow-bg { background-color: var(--yellow-bg); }
+.purple-bg { background-color: var(--purple-bg); }
+.pink-bg { background-color: var(--pink-bg); }
+
+@media (max-width: 1100px) {
+    .user-card {
+        max-width: calc(33.33% - 13.33px);
+    }
+}
+
+@media (max-width: 800px) {
+    .user-card {
+        max-width: calc(50% - 10px);
+    }
+}
+
+@media (max-width: 550px) {
+    .user-card {
+        max-width: 100%;
+    }
+}

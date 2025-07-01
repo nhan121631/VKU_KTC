@@ -1,0 +1,103 @@
+:root {
+    --font-main: 'Roboto', sans-serif;
+    --color-bg: #f0f2f5;
+    --color-white: #fff;
+    --color-fb: #5d8ac8;
+    --color-twitter: #49c5ed;
+    --color-gplus: #ff8a65;
+    --color-pinterest: #e74c3c;
+    --shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+    --gap: 20px;
+    --padding-card: 30px 20px;
+    --min-card: 180px;
+    --max-card: calc(25% - 25px);
+    --icon-size: 3.5em;
+    --font-social-name: 1.2em;
+    --font-social-count: 0.9em;
+}
+
+body {
+    font-family: var(--font-main);
+    background-color: var(--color-bg);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+.container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: var(--gap);
+    max-width: 1200px;
+    width: 100%;
+}
+
+.card {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: start;
+    color: var(--color-white);
+    padding: var(--padding-card);
+    box-shadow: var(--shadow);
+    flex: 1 1 200px;
+    min-width: var(--min-card);
+    max-width: var(--max-card);
+    min-height: 320px;
+    box-sizing: border-box;
+    text-align: center;
+}
+
+.icon-section {
+    font-size: var(--icon-size);
+    margin-bottom: 20px;
+}
+
+.text-section {
+    line-height: 1.4;
+}
+
+.social-name {
+    font-size: var(--font-social-name);
+    font-weight: 700;
+    margin-left: 10px;   
+    text-align: left;
+    text-transform: capitalize;
+}
+
+.social-count {
+    font-size: var(--font-social-count);
+    font-weight: 300;
+    text-align: left;
+    margin-left: 10px;   
+}
+
+/* Background Colors */
+.fb-bg { background-color: var(--color-fb); }
+.twitter-bg { background-color: var(--color-twitter); }
+.gplus-bg { background-color: var(--color-gplus); }
+.pinterest-bg { background-color: var(--color-pinterest); }
+
+/* Responsive adjustments */
+@media (max-width: 992px) {
+    .social-card {
+        max-width: calc(33.33% - 13.33px);
+    }
+}
+
+@media (max-width: 768px) {
+    .social-card {
+        max-width: calc(50% - 10px);
+    }
+}
+
+@media (max-width: 480px) {
+    .social-card {
+        max-width: 100%;
+    }   
+}

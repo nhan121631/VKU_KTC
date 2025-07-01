@@ -1,0 +1,171 @@
+:root {
+  --container-width: 540px;
+  --banner-height: 300px;
+  --label-width: 160px;
+  --spacing: 16px;
+  --spacing-sm: 5px;
+  --spacing-bottom: 20px;
+  --font-family: 'Roboto', sans-serif;
+  --font-size: 14px;
+  --font-size-sm: 12px;
+  --font-weight-bold: 700;
+  --color-white: #ffffff;
+  --color-background: rgb(244, 247, 252);
+  --text-color-primary: #ffffff;
+  --text-color-secondary: #a1a0a0;
+  --border-color: #EEEEEE;
+  --border: 1px solid var(--border-color);
+
+  /* Image */
+  --img-radius: 50%;
+
+  /* Badge common */
+  --badge-font-size: var(--font-size);
+  --badge-font-weight: var(--font-weight-bold);
+  --badge-padding: var(--spacing-sm);
+  --badge-radius: 10%;
+
+  /* Followers */
+  --followers-bg: rgb(234, 59, 76);
+  --followers-text: "Followers";
+  --followers-number-text: "1,200";
+
+  /* Followings */
+  --followings-bg: rgb(127, 175, 226);
+  --followings-text: "Followings";
+  --followings-number-text: "1,100";
+
+  /* Messages */
+  --messages-bg: rgb(46, 228, 158);
+  --messages-text: "Messages";
+  --messages-number-text: "1,200";
+
+  /* Likes */
+  --likes-bg: rgb(217, 179, 66);
+  --likes-text: "Likes";
+  --likes-number-text: "1,500";
+
+  /* Comments */
+  --comments-bg: rgb(222, 88, 216);
+  --comments-text: "Comments";
+  --comments-number-text: "1,100";
+}
+
+/* follows */
+.follows-text::before {
+    content: var(--followers-text);
+}
+.follows-number-text::before {
+    content: var(--followers-number-text);
+}
+.follows-bg {
+    background-color: var(--followers-bg);
+}
+/* followings */
+.followings-text::before {
+    content: var(--followings-text);
+}
+.followings-number-text::before {
+    content: var(--followings-number-text);
+}
+.followings-bg{
+    background-color: var(--followings-bg);
+}
+/* messages */
+.messages-text::before {
+    content: var(--messages-text);
+}
+.messages-number-text::before {
+    content: var(--messages-number-text);
+}
+.messages-bg {
+    background-color: var(--messages-bg);
+}
+/* likes */
+.likes-text::before {
+    content: var(--likes-text);
+}
+.likes-number-text::before {
+    content: var(--likes-number-text);
+}
+.likes-bg {
+    background-color: var(--likes-bg);
+}
+/* comment */
+.comments-text::before {
+    content: var(--comments-text);
+}
+.comments-number-text::before {
+    content: var(--comments-number-text);
+}
+.comments-bg {
+    background-color: var(--comments-bg);
+}
+
+.container {
+  width: var(--container-width);
+  background-color: var(--color-background);
+  margin: 0 auto;
+  padding: var(--spacing);
+  font-family: var(--font-family);
+}
+.card {
+  margin: var(--spacing);
+}
+.row-banner {
+  display: flex;
+  height: var(--banner-height);
+  align-items: flex-end;
+  background-image: url('https://hoanghamobile.com/tin-tuc/wp-content/uploads/2024/06/anh-hoang-hon-dep-2.jpg');
+}
+.col-banner-left {
+  width: 30%;
+  display: flex;
+  justify-content: center;
+  margin-bottom: var(--spacing-bottom);
+}
+.col-banner-right {
+  width: 70%;
+  justify-content: flex-start;
+  margin-bottom: var(--spacing-bottom);
+}
+.col-banner-left > img {
+  width: 60%;
+  border-radius: var(--img-radius);
+}
+.col-banner-right > h3,
+.col-banner-right > p {
+  color: var(--text-color-primary);
+}
+.col-banner-right>p{
+    font-size: var(--font-size-sm);
+}
+.row {
+  display: flex;
+  padding: var(--spacing);
+  border: var(--border);
+  border-top: 0px;
+  background-color: var(--color-white);
+  height: 100%;
+}
+.col-left {
+  color: var(--text-color-secondary);
+  font-size: var(--font-size);
+  font-family: var(--font-family);
+  font-weight: var(--font-weight-bold);
+  width: 30%;
+  display: flex;
+  align-items: center;
+  text-transform: uppercase;
+}
+.col-right {
+  width: 70%;
+  display: flex;
+  justify-content: flex-end;
+}
+.col-right > span {
+  color: var(--text-color-primary);
+  font-size: var(--badge-font-size);
+  padding: var(--badge-padding);
+  border-radius: var(--badge-radius);
+}

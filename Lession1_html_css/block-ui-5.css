@@ -1,0 +1,91 @@
+:root {
+    --font-main: 'Roboto', sans-serif;
+    --color-bg: #f0f2f5;
+    --color-white: #fff;
+    --color-blue: #4fc3f7;
+    --color-red: #e74c3c;
+    --color-green: #2ecc71;
+    --color-yellow: #f1c40f;
+    --color-orange: #ff8a65;
+    --color-pink: #e91e63;
+    --nav-radius: 5px;
+    --nav-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+    --nav-padding: 15px 20px;
+    --nav-gap: 2px;
+    --nav-min-width: 100px;
+    --nav-font-size: 1em;
+    --nav-font-weight: 700;
+    --nav-text-transform: uppercase;
+    --nav-hover-opacity: 0.9;
+    --nav-max-width: 900px;
+}
+
+body {
+    font-family: var(--font-main);
+    background-color: var(--color-bg);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+nav {
+    width: 100%;
+    max-width: var(--nav-max-width);
+    background-color: transparent;
+    border-radius: var(--nav-radius);
+    overflow: hidden;
+}
+
+.nav-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    box-shadow: var(--nav-shadow);
+    border-radius: var(--nav-radius);
+    gap: var(--nav-gap);
+}
+
+.nav-item {
+    flex: 1 1 auto;
+    min-width: var(--nav-min-width);
+    text-align: center;
+}
+
+.nav-link {
+    display: block;
+    padding: var(--nav-padding);
+    color: var(--color-white);
+    text-decoration: none;
+    font-size: var(--nav-font-size);
+    font-weight: var(--nav-font-weight);
+    text-transform: var(--nav-text-transform);
+    transition: background-color 0.3s ease;
+}
+
+.bg-blue { background-color: var(--color-blue); }
+.bg-red { background-color: var(--color-red); }
+.bg-green { background-color: var(--color-green); }
+.bg-yellow { background-color: var(--color-yellow); }
+.bg-orange { background-color: var(--color-orange); }
+.bg-pink { background-color: var(--color-pink); }
+
+@media (max-width: 768px) {
+    .nav-item {
+        min-width: calc(33.33% - var(--nav-gap));
+        margin-bottom: var(--nav-gap);
+    }
+}
+
+@media (max-width: 480px) {
+    .nav-item {
+        min-width: calc(50% - 1px);
+        margin-bottom: var(--nav-gap);
+    }
+}
