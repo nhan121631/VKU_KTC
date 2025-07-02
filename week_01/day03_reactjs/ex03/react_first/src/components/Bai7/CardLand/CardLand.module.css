@@ -1,0 +1,43 @@
+.cardContainer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: white;
+    padding: 20px;
+    border-radius: 20px;
+}
+
+.leftCol {
+    display: flex;
+    gap: 10px;
+}
+
+.bname {
+    font-weight: bold;
+}
+
+.bsubname {
+    font-weight: bold;
+}
+
+.title {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.bgYellow {
+    background-color: rgb(221, 221, 178);
+}
+
+.bgBlue {
+    background-color: rgb(124, 185, 224);
+}
+
+.icon {
+    font-size: 32px;
+}
+
+.img {
+    width: 54px;
+}
