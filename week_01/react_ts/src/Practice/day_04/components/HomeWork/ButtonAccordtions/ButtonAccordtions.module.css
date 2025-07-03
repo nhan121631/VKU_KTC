@@ -1,0 +1,13 @@
+.container {
+    background-color: white;
+    display: flex;
+    padding: 20px;
+    /* align-items: center; */
+    justify-content: center;
+    gap: 24px;
+}
+
+.col {
+    flex: none;
+    width: 600px;
+}

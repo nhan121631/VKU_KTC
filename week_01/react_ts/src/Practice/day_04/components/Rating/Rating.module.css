@@ -1,0 +1,10 @@
+.container {
+    display: flex;
+    gap: 2px;
+    color: gray;
+
+}
+
+.isRating {
+    color: orange;
+}

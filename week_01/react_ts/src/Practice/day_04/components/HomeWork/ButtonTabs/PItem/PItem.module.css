@@ -1,0 +1,9 @@
+.container {
+    display: none;
+    padding: 20px;
+    text-align: center;
+}
+
+.active {
+    display: block;
+}

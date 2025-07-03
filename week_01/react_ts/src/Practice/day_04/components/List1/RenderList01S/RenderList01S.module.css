@@ -1,0 +1,21 @@
+.cardContainer {
+    padding: 20px;
+    width: 100%;
+    background-color: white;
+
+}
+
+.labels {
+    display: flex;
+    padding: 10px;
+    align-items: center;
+    margin-left: 20px;
+    justify-content: space-between;
+}
+
+.container {
+    padding: 0;
+    display: flex;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+}

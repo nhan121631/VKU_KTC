@@ -1,0 +1,35 @@
+.outline {
+    background-color: white;
+    color: #666;
+    cursor: pointer;
+    flex-basis: 25%;
+    padding: 15px 0;
+    position: relative;
+    text-align: center;
+    text-transform: uppercase;
+    border-bottom: 1px solid #ddd;
+    bottom: -1px;
+    flex-basis: 20%;
+    z-index: 1;
+}
+
+.inline {
+    background-color: #f5f5f5;
+    color: #666;
+    cursor: pointer;
+    flex-basis: 25%;
+    padding: 15px 0;
+    position: relative;
+    text-align: center;
+    text-transform: uppercase;
+}
+
+.activeInline {
+    background-color: #47b475;
+    color: white;
+}
+
+.activeOutline {
+    color: #47b475;
+    border-bottom: 1px solid #47b475;
+}

@@ -1,0 +1,28 @@
+.container {
+    background-color: white;
+    width: 300px;
+    padding: 10px;
+    display: flex;
+    border-radius: 5px;
+    flex-direction: column;
+    /* box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15); */
+}
+
+.rowimg {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.img {
+    border-radius: 20px;
+    width: 300px;
+}
+
+.title {
+    width: 300px;
+}
+
+.view {
+    color: orangered;
+}

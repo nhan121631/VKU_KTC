@@ -1,0 +1,12 @@
+.attributes {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 8px 0;
+}
+
+.attr_name {
+    font-weight: bold;
+    color: #333;
+    margin-right: 8px;
+}

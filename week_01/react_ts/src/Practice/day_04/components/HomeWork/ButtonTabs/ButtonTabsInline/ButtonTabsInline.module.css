@@ -1,0 +1,18 @@
+.container {
+    display: flex;
+    margin-top: 20px;
+    background-color: aliceblue;
+}
+
+.cardContainer {
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    width: 600px;
+
+}
+
+.items {
+    display: flex;
+    flex-direction: column;
+}

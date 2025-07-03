@@ -1,7 +1,6 @@
 import React from "react";
 import styles from "./CardDate.module.css";
 export default function CardDate() {
-  // Define img object with valid properties or remove if not used
   const img = {
     Mon: "/images/mon.png",
     Tue: "/images/tue.png",
