@@ -2,9 +2,22 @@
     display: flex;
     gap: 2px;
     color: gray;
+    justify-content: space-between;
+    padding: 5px;
+    align-items: center;
+    width: 170px;
 
 }
 
 .isRating {
     color: orange;
+}
+
+.leftCol {
+    display: flex;
+}
+
+.rightCol {
+    display: flex;
+    flex: 1;
 }

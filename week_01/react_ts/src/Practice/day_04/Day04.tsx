@@ -6,6 +6,8 @@ import { ButtonLike } from "./components/HomeWork/LikeButton";
 import { SlideThumbnail } from "./components/HomeWork/Slide";
 import { RenderList01s } from "./components/List1/RenderList01S";
 import { PKlist } from "./components/List4/PKList";
+import { Item } from "./components/List5/Item";
+import { ListItem } from "./components/List5/List";
 import { Rating } from "./components/Rating";
 import { ListButton } from "./components/State1/ListButton";
 import styles from "./Day04.module.css";
@@ -13,14 +15,18 @@ export const Day04 = () => {
   return (
     <div className={styles.container}>
       {/* <RenderList01s /> */}
-      {/* <PKlist />
-      <ListButton />
-      <Rating /> */}
+      {/* 
+      <ListButton /> */}
+      {/* <PKlist /> */}
+      <ListItem />
+
+      {/* HomeWord */}
+      {/* <Rating />
       <ButtonLike />
       <SlideThumbnail />
       <ButtonTabsInline />
       <ButtonTabsOutLine />
-      <ButtonAccordtions />
+      <ButtonAccordtions /> */}
 
       {/* <div>
       </div> */}

@@ -8,21 +8,7 @@
 .rowFirst {
     display: flex;
     justify-content: center;
-    position: relative;
-}
-
-.thumbnail {
-    width: 240px;
-}
-
-.percent {
-    position: absolute;
-    background-color: orangered;
-    padding: 10px;
-    color: white;
-    border-radius: 10px;
-    top: 10px;
-    right: 10px;
+    /* position: relative; */
 }
 
 .price {

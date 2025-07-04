@@ -36,9 +36,9 @@ export const ButtonTabsInline = () => {
           />
         ))}
       </div>
-      <p>
+      <div>
         <PItem label={vbs[indexBtn]} isActive={true} />
-      </p>
+      </div>
     </div>
   );
 };

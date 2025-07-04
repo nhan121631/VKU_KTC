@@ -1,3 +1,4 @@
+import { ImageItem } from "../ImageItem";
 import styles from "./PKItem.module.css";
 type Props = {
   thumbnail: string;
@@ -17,12 +18,7 @@ export function PKItem({
   return (
     <div className={styles.containerCard}>
       <div className={styles.rowFirst}>
-        <img src={thumbnail} className={styles.thumbnail}></img>
-        {percent != 0 ? (
-          <span className={styles.percent}>-{percent}%</span>
-        ) : (
-          ""
-        )}
+        <ImageItem thumbnail={thumbnail} percent={percent} />
       </div>
       <h3>{name}</h3>
       <div className={styles.rowLast}>

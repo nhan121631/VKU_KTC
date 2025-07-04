@@ -1,0 +1,86 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding: 10px;
+
+}
+
+.title {
+    color: rgb(156, 156, 156);
+    text-transform: uppercase;
+}
+
+.title>hr {
+    border: none;
+    border-top: 1px solid rgb(187, 186, 186);
+    height: 0;
+    margin: 8px 0;
+}
+
+.prices {
+    display: flex;
+    gap: 10px;
+}
+
+.price {
+    font-weight: bold;
+    color: rgb(47, 137, 9);
+    font-size: 18px;
+}
+
+.priceOld {
+    color: rgb(138, 138, 125);
+    text-decoration: line-through;
+    font-size: 16px;
+    opacity: 50%;
+}
+
+.rowLast {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    color: gray;
+
+}
+
+.percent {
+    color: red;
+    font-size: 16px;
+}
+
+.describe {
+    text-align: left;
+    color: rgb(30, 151, 216);
+}
+
+/* .container {
+    display: flex;
+    gap: 2px;
+    color: gray;
+    justify-content: space-between;
+    padding: 5px;
+    align-items: center;
+    width: 170px;
+
+} */
+.displayStars {
+    display: flex;
+    color: gray;
+    gap: 5px;
+}
+
+.isRating {
+    color: orange;
+}
+
+.containerProgress {
+    background-color: rgb(214, 211, 211);
+    height: 12px;
+    width: 100%;
+}
+
+.progress {
+    background-color: orange;
+    height: 12px;
+}
