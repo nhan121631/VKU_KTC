@@ -1,6 +1,7 @@
 import { Item } from "../Item";
 import styles from "./ListItem.module.css";
 export const ListItem = () => {
+  //item
   const items = [
     {
       image: "/images/Day4/HomeWork/1.jpg",
