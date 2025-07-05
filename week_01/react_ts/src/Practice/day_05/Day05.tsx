@@ -10,6 +10,7 @@ import { Ex8 } from "./components/Afternoon/Ex8";
 import { Ex9 } from "./components/Afternoon/Ex9";
 import { Caculator } from "./components/HomeWork/Caculator/Caculator";
 import { FormRegister } from "./components/HomeWork/FormRegister";
+import { ProductGrid } from "./components/HomeWork/ShoppingCart/components/ProductGrid";
 import styles from "./Day05.module.css";
 
 export const Day05 = () => {
@@ -26,7 +27,8 @@ export const Day05 = () => {
       <Ex9 />
       <Ex10 /> */}
       {/* <Caculator /> */}
-      <FormRegister />
+      {/* <FormRegister /> */}
+      <ProductGrid />
     </div>
   );
 };
