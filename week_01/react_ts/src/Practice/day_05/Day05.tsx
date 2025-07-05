@@ -8,12 +8,14 @@ import { Ex6 } from "./components/Afternoon/Ex6";
 import { Ex7 } from "./components/Afternoon/Ex7";
 import { Ex8 } from "./components/Afternoon/Ex8";
 import { Ex9 } from "./components/Afternoon/Ex9";
+import { Caculator } from "./components/HomeWork/Caculator/Caculator";
+import { FormRegister } from "./components/HomeWork/FormRegister";
 import styles from "./Day05.module.css";
 
 export const Day05 = () => {
   return (
     <div className={styles.container}>
-      <Ex1 />
+      {/* <Ex1 />
       <Ex2 />
       <Ex3 />
       <Ex4 />
@@ -22,7 +24,9 @@ export const Day05 = () => {
       <Ex7 />
       <Ex8 />
       <Ex9 />
-      <Ex10 />
+      <Ex10 /> */}
+      {/* <Caculator /> */}
+      <FormRegister />
     </div>
   );
 };

@@ -1,0 +1,39 @@
+.container {
+    background-color: white;
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    gap: 20px;
+    width: 220px;
+    border: 1px solid rgb(236, 235, 235);
+    border-radius: 2px;
+}
+
+.caculator {
+    display: flex;
+    width: 100%;
+    justify-content: space-evenly;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 7px;
+
+}
+
+.caculator>*:last-child {
+    width: 100%;
+    margin: 6px;
+    flex-basis: 100%;
+}
+
+.screenResult {
+    width: 88%;
+    height: 30px;
+    border-radius: 5px;
+    border: 1px solid rgb(137, 137, 137);
+    display: flex;
+    align-items: center;
+    justify-content: start;
+    padding: 10px;
+    font-size: 20px;
+}
