@@ -57,17 +57,60 @@
     display: flex;
     align-items: center;
     cursor: pointer;
-    gap: 5px;
-    width: 150px;
+    gap: 8px;
+    padding: 8px 12px;
+    border-radius: 6px;
+    transition: all 0.2s ease;
+    background-color: #f8f9fa;
+    border: 1px solid #dee2e6;
 }
 
-.cartIcon {
-    width: 30px;
-    height: 30px;
+.cartIconContainer:hover {
+    background-color: #e9ecef;
+    border-color: #adb5bd;
+}
+
+.cartIconWrapper {
+    position: relative;
     display: flex;
     align-items: center;
     justify-content: center;
-    color: rgb(149, 149, 149);
+}
+
+.cartIcon {
+    width: 24px;
+    height: 24px;
+    color: #495057;
+    transition: color 0.2s ease;
+}
+
+.cartIconContainer:hover .cartIcon {
+    color: #228be6;
+}
+
+.cartBadge {
+    position: absolute;
+    top: -8px;
+    right: -8px;
+    background-color: #fa5252;
+    color: white;
+    border-radius: 50%;
+    width: 18px;
+    height: 18px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 11px;
+    font-weight: bold;
+    border: 2px solid white;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.cartText {
+    font-size: 14px;
+    color: #495057;
+    font-weight: 500;
+    white-space: nowrap;
 }
 
 .containerProductCard {
