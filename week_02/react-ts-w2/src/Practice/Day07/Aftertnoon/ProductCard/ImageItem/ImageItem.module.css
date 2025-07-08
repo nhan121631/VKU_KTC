@@ -1,0 +1,24 @@
+.container {
+    display: flex;
+    justify-content: center;
+    position: relative;
+}
+
+.thumbnail {
+    width: 200px;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+}
+
+.percent {
+    position: absolute;
+    background-color: orangered;
+    padding: 10px;
+    color: white;
+    border-radius: 10px;
+    top: 10px;
+    right: 10px;
+}
