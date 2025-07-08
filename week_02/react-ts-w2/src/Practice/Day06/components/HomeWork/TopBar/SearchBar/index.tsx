@@ -14,7 +14,7 @@ export const SearchBar = ({ onSearch }: Props) => {
   const handleSearch = async () => {
     try {
       const response = await fetch(
-        url + city + "&days=2&aqi=no&alerts=no&lang=vi"
+        url + city + "&days=1&aqi=no&alerts=no&lang=vi"
       );
       if (!response.ok) {
         throw new Error("Failed to fetch weather data");

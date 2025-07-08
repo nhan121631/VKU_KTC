@@ -7,18 +7,13 @@ type Props = {
 export const ForceCard: React.FC<Props> = ({ weatherDatas }) => {
   if (!weatherDatas || weatherDatas.length === 0) return null;
 
-  const hoursToday = weatherDatas[0].hour;
-  const hoursTomorrow = weatherDatas[1]?.hour || [];
-  const allHours = [...hoursToday, ...hoursTomorrow];
+  const hoursToday = weatherDatas[0]?.hour;
 
-  const now = new Date();
-  const nowHour = now.getHours();
-
-  const nearest4 = allHours.slice(nowHour, nowHour + 4);
+  if (!hoursToday || hoursToday.length === 0) return null;
 
   return (
-    <div className="flex justify-center gap-2 mt-6 bg-white rounded-2xl p-4">
-      {nearest4.map((h, idx) => (
+    <div className="flex justify-start gap-2 mt-6 bg-white rounded-2xl p-2 overflow-x-auto [&::-webkit-scrollbar]:hidden">
+      {hoursToday.map((h: any, idx: number) => (
         <div
           key={idx}
           className=" rounded-xl p-3 flex flex-col items-center w-30 h-36"
@@ -30,7 +25,6 @@ export const ForceCard: React.FC<Props> = ({ weatherDatas }) => {
             className="w-10 h-10"
           />
           <div className="text-lg font-bold">{h.temp_c}°C</div>
-          <div className="text-xs">{h.condition.text}</div>
         </div>
       ))}
     </div>
