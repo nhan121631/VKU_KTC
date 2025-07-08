@@ -1,12 +1,14 @@
-import { BrowserRouter } from "react-router";
+import { BrowserRouter, Route } from "react-router";
 import { MainApp } from "./Aftertnoon/RouteApp";
+import { DashBoardRoute } from "./HomeWork/DashBoardRoute";
 
 export const Day07 = () => {
   return (
     <>
       <BrowserRouter>
         {/* <Index /> */}
-        <MainApp />
+        {/* <MainApp /> */}
+        <DashBoardRoute />
       </BrowserRouter>
     </>
   );

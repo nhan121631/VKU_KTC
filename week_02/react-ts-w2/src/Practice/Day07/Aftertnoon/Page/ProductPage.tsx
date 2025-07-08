@@ -1,7 +1,4 @@
-import React, { useEffect } from "react";
 import { Filter } from "../Filter";
-import type { Product } from "../type/Product";
-import { ProductList } from "../ProductList";
 import { Outlet } from "react-router";
 
 export const ProductPage = () => {
