@@ -8,11 +8,13 @@ import { HistoryPage } from "./Practice/Day07/HomeWork/Page/History";
 import { SettingPage } from "./Practice/Day07/HomeWork/Page/Setting";
 import { MainLayout } from "./Practice/Day07/HomeWork/MainLayout";
 import { Patients } from "./Practice/Day07/HomeWork/Page/Patients";
+import { BtnApp } from "./BtnApp";
 
 export const AppRoute = () => {
   return (
     <Routes>
       <Route path="/" element={<Day07 />}>
+        <Route index element={<BtnApp />} />
         <Route path="Day07/HomeWork" element={<MainLayout />}>
           <Route index element={<Patients />} />
           <Route path="overview" element={<OverViewPage />} />
