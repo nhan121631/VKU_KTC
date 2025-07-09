@@ -17,6 +17,13 @@ export const BtnAfternoonDay8 = () => {
           </button>
         </div>
       </Link>
+      <Link to="/day08/afternoon/formthree">
+        <div className="flex items-center bg-gray-100">
+          <button className="px-6 py-3 bg-green-600 text-white rounded-lg shadow-md hover:bg-green-700 transition-colors duration-300">
+            Form Three
+          </button>
+        </div>
+      </Link>
     </div>
   );
 };
