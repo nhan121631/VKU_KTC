@@ -1,7 +1,7 @@
 import { useParams } from "react-router";
 import { ProductCard } from "../ProductCard";
 import type { Product } from "../type/Product";
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import Skeleton from "react-loading-skeleton";
 import "react-loading-skeleton/dist/skeleton.css";
 

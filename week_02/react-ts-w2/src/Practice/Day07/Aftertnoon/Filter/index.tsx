@@ -1,7 +1,6 @@
 import React, { useEffect } from "react";
 import type { Category } from "../type/Category";
-import { BrowserRouter, Routes, Route, NavLink } from "react-router";
-import { ProductPage } from "../Page/ProductPage";
+import { NavLink } from "react-router";
 export const Filter = () => {
   const url = "https://api.escuelajs.co/api/v1/categories";
   const [categories, setCategories] = React.useState<Category[]>([]);

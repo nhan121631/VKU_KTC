@@ -1,6 +1,6 @@
 import * as React from "react";
 import { CreatList } from "./CreatList";
-import { List } from "./list";
+import { List } from "./List";
 
 export function Index() {
   const [reload, setReload] = React.useState(false);
