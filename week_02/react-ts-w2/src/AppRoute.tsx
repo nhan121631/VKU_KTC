@@ -12,8 +12,8 @@ import { Patients } from "./Practice/Day07/HomeWork/Page/Patients";
 export const AppRoute = () => {
   return (
     <Routes>
-      <Route path="/Day07" element={<Day07 />}>
-        <Route path="HomeWork" element={<MainLayout />}>
+      <Route path="/" element={<Day07 />}>
+        <Route path="Day07/HomeWork" element={<MainLayout />}>
           <Route index element={<Patients />} />
           <Route path="overview" element={<OverViewPage />} />
           <Route path="map" element={<MapPage />} />
