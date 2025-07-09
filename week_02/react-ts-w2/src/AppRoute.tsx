@@ -9,6 +9,11 @@ import { SettingPage } from "./Practice/Day07/HomeWork/Page/Setting";
 import { MainLayout } from "./Practice/Day07/HomeWork/MainLayout";
 import { Patients } from "./Practice/Day07/HomeWork/Page/Patients";
 import { BtnApp } from "./BtnApp";
+import { Day08 } from "./Practice/Day08/Day08";
+import { AfternoonDay8 } from "./Practice/Day08/Afternoon";
+import { FormOne } from "./Practice/Day08/Afternoon/FormOne";
+import { BtnDay08 } from "./Practice/Day08/BtnDay08";
+import { BtnAfternoonDay8 } from "./Practice/Day08/Afternoon/BtnAffterNoon08";
 
 export const AppRoute = () => {
   return (
@@ -24,6 +29,13 @@ export const AppRoute = () => {
           <Route path="history" element={<HistoryPage />} />
           <Route path="settings" element={<SettingPage />} />
           <Route path="*" element={<div>404 Not Found</div>} />
+        </Route>
+        <Route path="day08" element={<Day08 />}>
+          <Route index element={<BtnDay08 />} />
+          <Route path="afternoon" element={<AfternoonDay8 />}>
+            <Route index element={<BtnAfternoonDay8 />} />
+            <Route path="formone" element={<FormOne />} />
+          </Route>
         </Route>
       </Route>
     </Routes>
