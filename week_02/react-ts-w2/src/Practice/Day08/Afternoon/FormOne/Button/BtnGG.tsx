@@ -1,5 +1,4 @@
 import React from "react";
-import { FaFacebook } from "react-icons/fa";
 
 type Props = {
   icon: React.ReactNode;

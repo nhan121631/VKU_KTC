@@ -1,5 +1,4 @@
 import { FaApple, FaChevronLeft, FaFacebook, FaGoogle } from "react-icons/fa";
-import { Button } from "./Button/Btn";
 import { BtnGG } from "./Button/BtnGG";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
