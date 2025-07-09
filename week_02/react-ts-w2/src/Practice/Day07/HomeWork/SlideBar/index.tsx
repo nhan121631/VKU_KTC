@@ -22,7 +22,7 @@ export const Sidebar = () => {
             <NavLink
               to={item.path}
               className={({ isActive }) =>
-                `block px-4 py-2 rounded-lg text-sm font-medium transition-all duration-100 ease-in-out
+                `block px-4 py-2 rounded-lg text-sm font-medium transition-all duration-300 ease-in-out
                 ${
                   isActive
                     ? "bg-white text-gray-900 shadow-md"
