@@ -14,6 +14,7 @@ import { AfternoonDay8 } from "./Practice/Day08/Afternoon";
 import { FormOne } from "./Practice/Day08/Afternoon/FormOne";
 import { BtnDay08 } from "./Practice/Day08/BtnDay08";
 import { BtnAfternoonDay8 } from "./Practice/Day08/Afternoon/BtnAffterNoon08";
+import { FormTwo } from "./Practice/Day08/Afternoon/FormTwo";
 
 export const AppRoute = () => {
   return (
@@ -35,6 +36,7 @@ export const AppRoute = () => {
           <Route path="afternoon" element={<AfternoonDay8 />}>
             <Route index element={<BtnAfternoonDay8 />} />
             <Route path="formone" element={<FormOne />} />
+            <Route path="formtwo" element={<FormTwo />} />
           </Route>
         </Route>
       </Route>

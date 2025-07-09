@@ -181,7 +181,8 @@ const FormSignUp = ({ onclick, email }: FormSignUpProps) => {
     </div>
   );
 };
-
+// FormSignIn component
+// This component is used to log in after the user has created an account.
 type FormSignInProps = {
   email: string;
   name: string;
