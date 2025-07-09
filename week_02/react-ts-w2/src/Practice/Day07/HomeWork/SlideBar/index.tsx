@@ -1,13 +1,13 @@
 import { NavLink } from "react-router";
 
 const menuItems = [
-  { label: "Patients", path: "/" },
-  { label: "Overview", path: "/overview" },
-  { label: "Map", path: "/map" },
-  { label: "Departments", path: "/departments" },
-  { label: "Doctors", path: "/doctors" },
-  { label: "History", path: "/history" },
-  { label: "Settings", path: "/settings" },
+  { label: "Patients", path: "/Day07/HomeWork/" },
+  { label: "Overview", path: "/Day07/HomeWork/overview" },
+  { label: "Map", path: "/Day07/HomeWork/map" },
+  { label: "Departments", path: "/Day07/HomeWork/departments" },
+  { label: "Doctors", path: "/Day07/HomeWork/doctors" },
+  { label: "History", path: "/Day07/HomeWork/history" },
+  { label: "Settings", path: "/Day07/HomeWork/settings" },
 ];
 
 export const Sidebar = () => {
@@ -21,6 +21,7 @@ export const Sidebar = () => {
           <li key={item.path}>
             <NavLink
               to={item.path}
+              end={item.path === "/Day07/HomeWork/"}
               className={({ isActive }) =>
                 `block px-4 py-2 rounded-lg text-sm font-medium transition-all duration-300 ease-in-out
                 ${

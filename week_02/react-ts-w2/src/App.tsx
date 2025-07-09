@@ -1,12 +1,16 @@
+import { BrowserRouter } from "react-router";
 import "./App.css";
 // import { Day06 } from "./Practice/Day06/Day06";
-import { Day07 } from "./Practice/Day07/Day07";
+import { AppRoute } from "./AppRoute";
 
 function App() {
   return (
     <div className="">
-      {/* <Day06 /> */}
-      <Day07 />
+      <BrowserRouter>
+        {/* <Day06 /> */}
+        {/* <Day07 /> */}
+        <AppRoute />
+      </BrowserRouter>
     </div>
   );
 }
