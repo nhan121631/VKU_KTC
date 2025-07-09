@@ -61,7 +61,7 @@ export const FormTwo = () => {
         </span>
         <img src="https://nhannn87dn.github.io/ui-form-antd-yup/statics/img/lottery-display.svg"></img>
       </div>
-      <div className="flex min-h-screen w-full sm:w-3/4 bg-amber-50 text-sky-600 p-5 flex-col justify-start sm:justify-center">
+      <div className="flex min-h-screen w-full sm:w-3/4 bg-white text-sky-600 p-5 flex-col justify-start sm:justify-center">
         <h1 className="text-3xl font-semibold">Register</h1>
         <div className="flex flex-col gap-4 my-5 sm:w-[60%] w-full">
           <h3 className="text-2xl font-semibold mt-15">
