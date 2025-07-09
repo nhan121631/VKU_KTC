@@ -48,7 +48,7 @@ export const FormTwo = () => {
   } = useForm({
     resolver: yupResolver(schema),
   });
-  const onSubmit = (data: any) => alert("succes");
+  const onSubmit = () => alert("succes");
   return (
     <div className="flex text-white w-full min-h-screen justify-center">
       <div className="bg-blue-300 w-1/4 p-5 flex-col hidden md:block">
