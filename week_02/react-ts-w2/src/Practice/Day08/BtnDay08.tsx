@@ -10,7 +10,7 @@ export const BtnDay08 = () => {
           </button>
         </div>
       </Link>
-      <Link to="/day08/afternoon/formone">
+      <Link to="/day08/homework">
         <div className="flex items-center justify-center bg-gray-100">
           <button className="px-6 py-3 bg-blue-600 text-white rounded-lg shadow-md hover:bg-blue-700 transition-colors duration-300">
             Day 08 homework
