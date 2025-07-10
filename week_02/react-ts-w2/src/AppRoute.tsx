@@ -21,7 +21,6 @@ import { HomeWork08 } from "./Practice/Day08/Homework";
 export const AppRoute = () => {
   return (
     <Routes>
-      
       <Route path="/" element={<Day07 />}>
         <Route index element={<BtnApp />} />
         <Route path="Day07/HomeWork" element={<MainLayout />}>
@@ -45,8 +44,6 @@ export const AppRoute = () => {
           </Route>
           <Route path="homework" element={<HomeWork08 />} />
         </Route>
-
-
       </Route>
     </Routes>
   );
