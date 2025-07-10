@@ -1,8 +1,8 @@
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
-import { createTask, fetchTasks, getTaskById, updateTask } from "../services";
+import { getTaskById, updateTask } from "../services";
 import { useNavigate, useParams } from "react-router";
-import { get, useForm, type SubmitHandler } from "react-hook-form";
+import { useForm, type SubmitHandler } from "react-hook-form";
 import { useEffect } from "react";
 
 interface IFormInput {
