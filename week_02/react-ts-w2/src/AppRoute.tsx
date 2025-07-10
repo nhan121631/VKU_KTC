@@ -21,6 +21,7 @@ import { HomeWork08 } from "./Practice/Day08/Homework";
 export const AppRoute = () => {
   return (
     <Routes>
+      
       <Route path="/" element={<Day07 />}>
         <Route index element={<BtnApp />} />
         <Route path="Day07/HomeWork" element={<MainLayout />}>
@@ -33,6 +34,7 @@ export const AppRoute = () => {
           <Route path="settings" element={<SettingPage />} />
           <Route path="*" element={<div>404 Not Found</div>} />
         </Route>
+
         <Route path="day08" element={<Day08 />}>
           <Route index element={<BtnDay08 />} />
           <Route path="afternoon" element={<AfternoonDay8 />}>
@@ -43,6 +45,8 @@ export const AppRoute = () => {
           </Route>
           <Route path="homework" element={<HomeWork08 />} />
         </Route>
+
+
       </Route>
     </Routes>
   );
