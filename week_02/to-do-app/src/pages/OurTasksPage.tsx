@@ -24,9 +24,7 @@ export const OurTasksPage = () => {
     priority: "",
   });
   const handleOnSearch = (filters: { status?: string; priority?: string }) => {
-    // Logic to filter tasks based on status and priority
     console.log("Filters applied:", filters);
-    // You can implement the filtering logic here or pass it to a service function
     setFilters(filters);
   };
 

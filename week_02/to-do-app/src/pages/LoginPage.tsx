@@ -42,8 +42,7 @@ export const LogInPage = () => {
       setUser(user);
       localStorage.setItem("user", JSON.stringify(user));
       localStorage.setItem("access_token", user.access_token);
-      // Redirect to tasks page or any other page
-      window.location.href = "/tasks"; // Adjust the path as needed
+      window.location.href = "/tasks";
     } else {
       alert("Login failed. Please check your credentials.");
     }

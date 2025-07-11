@@ -23,7 +23,7 @@ export const NavBar = () => {
     <nav className="bg-sky-900 text-white px-5 py-4">
       <div className="flex justify-between items-center">
         {/* Logo */}
-        <div className="text-2xl font-semibold">nhaan x es</div>
+        <div className="text-2xl font-semibold">Task Management</div>
 
         {/* Hamburger Icon */}
         <div className="md:hidden">
