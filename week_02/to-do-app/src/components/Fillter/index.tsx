@@ -31,13 +31,11 @@ export default function SearchTasks({ onSearch }: Props) {
   return (
     <div className="max-w-xl mx-auto bg-white p-6 rounded-2xl shadow-lg border border-gray-200">
       <h3 className="text-lg font-semibold text-[#7f7fd5] mb-4 text-center">
-        🔍 Filter Tasks
+        Filter Tasks
       </h3>
 
       <form onSubmit={handleSubmit(onSubmit)} className="space-y-4 text-sm">
-        {/* Row: Status + Priority */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-          {/* Status */}
           <div>
             <label
               htmlFor="status"
