@@ -69,7 +69,7 @@ export const CreateTaskPage = () => {
       description: "",
       status: "to_do",
       priority: "medium",
-      assignee_id: undefined, // Optional field
+      assignee_id: undefined,
     },
     mode: "onChange",
   });
@@ -78,7 +78,7 @@ export const CreateTaskPage = () => {
     try {
       await createTask(data);
       console.log("Task created successfully:", data);
-      navigate("/tasks"); // Redirect to tasks page after creation
+      navigate("/tasks");
     } catch (error) {
       console.error("Error creating task:", error);
       alert("Failed to create task. Please try again.");
@@ -86,145 +86,128 @@ export const CreateTaskPage = () => {
   };
 
   return (
-    <div className="flex items-center justify-center h-screen bg-white mt-20">
-      <div className="bg-white p-8 rounded-lg shadow-md sm:w-[60%] w-full">
-        <h2 className="text-2xl font-bold mb-6 text-center">Create Task</h2>
-        <form onSubmit={handleSubmit(onSubmit)}>
-          <div className="mb-4">
-            <label className="block text-sm font-medium mb-2" htmlFor="title">
-              Title
-            </label>
+    <div className="flex items-center justify-center min-h-screen bg-gradient-to-br from-[#e3f2fd] to-[#f1f5ff] px-4 py-8">
+      <div className="bg-white rounded-2xl shadow-lg w-full max-w-3xl p-8">
+        <h2 className="text-2xl font-bold text-center text-[#7f7fd5] mb-6">
+          Create Task
+        </h2>
+        <form onSubmit={handleSubmit(onSubmit)} className="space-y-5">
+          {/* Title */}
+          <div>
+            <label className="block text-sm font-medium mb-1">Title</label>
             <input
-              type="text"
-              id="title"
               {...register("title")}
-              className="w-full px-3 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
+              className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#7f7fd5] outline-none"
               placeholder="Enter task title"
             />
             {errors.title && (
-              <p className="text-red-500 text-sm mt-1">
-                {errors.title.message}
-              </p>
+              <p className="text-red-500 text-sm">{errors.title.message}</p>
             )}
           </div>
-          <div className="mb-4">
-            <label
-              className="block text-sm font-medium mb-2"
-              htmlFor="description"
-            >
+
+          {/* Description */}
+          <div>
+            <label className="block text-sm font-medium mb-1">
               Description
             </label>
             <textarea
-              id="description"
               {...register("description")}
-              className="w-full px-3 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
+              rows={3}
+              className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#7f7fd5] outline-none"
               placeholder="Enter task description"
-            ></textarea>
+            />
             {errors.description && (
-              <p className="text-red-500 text-sm mt-1">
+              <p className="text-red-500 text-sm">
                 {errors.description.message}
               </p>
             )}
           </div>
-          <div className="mb-4">
-            <label className="block text-sm font-medium mb-2" htmlFor="status">
-              Status
-            </label>
-            <select
-              id="status"
-              {...register("status")}
-              className="w-full px-3 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
-            >
-              <option value="to_do">To Do</option>
-              <option value="in_progress">In Progress</option>
-              <option value="done">Done</option>
-            </select>
-            {errors.status && (
-              <p className="text-red-500 text-sm mt-1">
-                {errors.status.message}
-              </p>
-            )}
+
+          {/* Grid: Status + Priority + Dates + Assignee */}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div>
+              <label className="block text-sm font-medium mb-1">Status</label>
+              <select
+                {...register("status")}
+                className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#7f7fd5]"
+              >
+                <option value="to_do">To Do</option>
+                <option value="in_progress">In Progress</option>
+                <option value="done">Done</option>
+              </select>
+              {errors.status && (
+                <p className="text-red-500 text-sm">{errors.status.message}</p>
+              )}
+            </div>
+
+            <div>
+              <label className="block text-sm font-medium mb-1">Priority</label>
+              <select
+                {...register("priority")}
+                className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#7f7fd5]"
+              >
+                <option value="low">Low</option>
+                <option value="medium">Medium</option>
+                <option value="high">High</option>
+              </select>
+              {errors.priority && (
+                <p className="text-red-500 text-sm">
+                  {errors.priority.message}
+                </p>
+              )}
+            </div>
+
+            <div>
+              <label className="block text-sm font-medium mb-1">
+                Start Date
+              </label>
+              <input
+                type="date"
+                {...register("start_date")}
+                className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#7f7fd5]"
+              />
+              {errors.start_date && (
+                <p className="text-red-500 text-sm">
+                  {errors.start_date.message}
+                </p>
+              )}
+            </div>
+
+            <div>
+              <label className="block text-sm font-medium mb-1">Due Date</label>
+              <input
+                type="date"
+                {...register("due_date")}
+                className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#7f7fd5]"
+              />
+              {errors.due_date && (
+                <p className="text-red-500 text-sm">
+                  {errors.due_date.message}
+                </p>
+              )}
+            </div>
+
+            <div className="md:col-span-2">
+              <label className="block text-sm font-medium mb-1">
+                Assignee ID
+              </label>
+              <input
+                type="number"
+                {...register("assignee_id")}
+                className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#7f7fd5]"
+                placeholder="Enter assignee ID"
+              />
+              {errors.assignee_id && (
+                <p className="text-red-500 text-sm">
+                  {errors.assignee_id.message}
+                </p>
+              )}
+            </div>
           </div>
-          <div className="mb-4">
-            <label
-              className="block text-sm font-medium mb-2"
-              htmlFor="priority"
-            >
-              Priority
-            </label>
-            <select
-              id="priority"
-              {...register("priority")}
-              className="w-full px-3 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
-            >
-              <option value="low">Low</option>
-              <option value="medium">Medium</option>
-              <option value="high">High</option>
-            </select>
-            {errors.priority && (
-              <p className="text-red-500 text-sm mt-1">
-                {errors.priority.message}
-              </p>
-            )}
-          </div>
-          <div className="mb-4">
-            <label
-              className="block text-sm font-medium mb-2"
-              htmlFor="startDate"
-            >
-              Start Date
-            </label>
-            <input
-              type="date"
-              id="startDate"
-              {...register("start_date")}
-              className="w-full px-3 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
-            />
-            {errors.start_date && (
-              <p className="text-red-500 text-sm mt-1">
-                {errors.start_date.message}
-              </p>
-            )}
-          </div>
-          <div className="mb-4">
-            <label className="block text-sm font-medium mb-2" htmlFor="dueDate">
-              Due Date
-            </label>
-            <input
-              type="date"
-              id="dueDate"
-              {...register("due_date")}
-              className="w-full px-3 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
-            />
-            {errors.due_date && (
-              <p className="text-red-500 text-sm mt-1">
-                {errors.due_date.message}
-              </p>
-            )}
-          </div>
-          <div className="mb-4">
-            <label
-              className="block text-sm font-medium mb-2"
-              htmlFor="assignee"
-            >
-              Assigned To
-            </label>
-            <input
-              type="number"
-              id="assignee_id"
-              {...register("assignee_id")}
-              className="w-full px-3 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
-              placeholder="Enter assignee's name or ID"
-            />
-            {errors.assignee_id && (
-              <p className="text-red-500 text-sm mt-1">
-                {errors.assignee_id.message}
-              </p>
-            )}
-          </div>
+
           <button
             type="submit"
-            className="w-full bg-blue-600 text-white py-2 rounded hover:bg-blue-700 transition duration-200"
+            className="w-full bg-[#7f7fd5] hover:bg-[#6c6cd1] text-white py-2 rounded-full font-semibold transition duration-200"
           >
             Create Task
           </button>

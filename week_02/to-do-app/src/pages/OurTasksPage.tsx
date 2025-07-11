@@ -44,7 +44,7 @@ export const OurTasksPage = () => {
   return (
     <div className="container mx-auto p-4">
       <SearchTasks onSearch={handleOnSearch} />
-      <table className="min-w-full bg-white border border-gray-200 rounded-lg overflow-hidden text-sm">
+      <table className="min-w-full bg-white border border-gray-200 rounded-lg overflow-hidden text-sm mt-5">
         <thead className="bg-gray-300 text-gray-700">
           <tr>
             <th className="py-3 px-4 text-left border-b border-gray-200">
@@ -87,9 +87,9 @@ export const OurTasksPage = () => {
               <td className="py-2 px-4">{task.description}</td>
               <td className="py-2 px-4">
                 <span
-                  className={`px-3 py-1 rounded-full text-xs font-semibold ${
+                  className={`px-3 py-1 rounded-full text-xs font-semibold border ${
                     task.status === "to_do"
-                      ? "bg-blue-100 text-blue-800"
+                      ? "bg-blue-100 text-blue-800 "
                       : task.status === "in_progress"
                       ? "bg-yellow-100 text-yellow-800"
                       : task.status === "done"
@@ -103,7 +103,7 @@ export const OurTasksPage = () => {
               <td className="py-2 px-4">
                 {" "}
                 <span
-                  className={`px-3 py-1 rounded-full text-xs font-semibold ${
+                  className={`px-3 py-1 rounded-full text-xs font-semibold border ${
                     task.priority === "high"
                       ? "bg-red-100 text-red-800"
                       : task.priority === "medium"
@@ -129,7 +129,7 @@ export const OurTasksPage = () => {
               <td className="py-2 px-4">{task.assignee_id}</td>
               <td className="py-2 px-4">
                 <Link to={`/update-task/${task.id}`}>
-                  <button className="bg-blue-500 hover:bg-blue-600 text-white px-4 py-1.5 rounded-full text-sm shadow-sm transition">
+                  <button className="bg-[#7f7fd5] hover:bg-[#6c6cd1] text-white px-4 py-1.5 rounded-full text-sm shadow-sm transition">
                     Edit
                   </button>
                 </Link>
