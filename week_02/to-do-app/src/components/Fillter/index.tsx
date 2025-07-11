@@ -10,7 +10,6 @@ type Props = {
 };
 
 export default function SearchTasks({ onSearch }: Props) {
-  // react form hook
   const {
     register,
     handleSubmit,
@@ -30,63 +29,70 @@ export default function SearchTasks({ onSearch }: Props) {
   };
 
   return (
-    <div className="max-w-sm mx-auto bg-white p-4 rounded-md shadow-sm">
-      <form onSubmit={handleSubmit(onSubmit)} className="space-y-4 text-sm">
-        {/* Status Field */}
-        <div>
-          <label
-            htmlFor="status"
-            className="block font-medium text-gray-700 mb-1"
-          >
-            Status
-          </label>
-          <select
-            {...register("status")}
-            id="status"
-            name="status"
-            className="w-full border border-gray-300 rounded px-2 py-1 focus:outline-none focus:ring-1 focus:ring-sky-500 focus:border-sky-500"
-          >
-            <option value="">All</option>
-            <option value="to_do">To Do</option>
-            <option value="in_progress">In Progress</option>
-            <option value="done">Done</option>
-          </select>
-          {errors.status && (
-            <p className="text-red-500 text-xs mt-1">{errors.status.message}</p>
-          )}
-        </div>
+    <div className="max-w-xl mx-auto bg-white p-6 rounded-2xl shadow-lg border border-gray-200">
+      <h3 className="text-lg font-semibold text-[#7f7fd5] mb-4 text-center">
+        🔍 Filter Tasks
+      </h3>
 
-        {/* Priority Field */}
-        <div>
-          <label
-            htmlFor="priority"
-            className="block font-medium text-gray-700 mb-1"
-          >
-            Priority
-          </label>
-          <select
-            {...register("priority")}
-            id="priority"
-            name="priority"
-            className="w-full border border-gray-300 rounded px-2 py-1 focus:outline-none focus:ring-1 focus:ring-sky-500 focus:border-sky-500"
-          >
-            <option value="">All</option>
-            <option value="low">Low</option>
-            <option value="medium">Medium</option>
-            <option value="high">High</option>
-          </select>
-          {errors.priority && (
-            <p className="text-red-500 text-xs mt-1">
-              {errors.priority.message}
-            </p>
-          )}
+      <form onSubmit={handleSubmit(onSubmit)} className="space-y-4 text-sm">
+        {/* Row: Status + Priority */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+          {/* Status */}
+          <div>
+            <label
+              htmlFor="status"
+              className="block font-medium text-gray-700 mb-1"
+            >
+              Status
+            </label>
+            <select
+              {...register("status")}
+              id="status"
+              className="w-full border border-gray-300 rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-[#7f7fd5] transition"
+            >
+              <option value="">All</option>
+              <option value="to_do">To Do</option>
+              <option value="in_progress">In Progress</option>
+              <option value="done">Done</option>
+            </select>
+            {errors.status && (
+              <p className="text-red-500 text-xs mt-1">
+                {errors.status.message}
+              </p>
+            )}
+          </div>
+
+          {/* Priority */}
+          <div>
+            <label
+              htmlFor="priority"
+              className="block font-medium text-gray-700 mb-1"
+            >
+              Priority
+            </label>
+            <select
+              {...register("priority")}
+              id="priority"
+              className="w-full border border-gray-300 rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-[#7f7fd5] transition"
+            >
+              <option value="">All</option>
+              <option value="low">Low</option>
+              <option value="medium">Medium</option>
+              <option value="high">High</option>
+            </select>
+            {errors.priority && (
+              <p className="text-red-500 text-xs mt-1">
+                {errors.priority.message}
+              </p>
+            )}
+          </div>
         </div>
 
         {/* Submit Button */}
         <div>
           <button
             type="submit"
-            className="w-full bg-sky-600 text-white py-1.5 px-3 rounded hover:bg-sky-700 transition duration-200 font-medium text-sm"
+            className="w-full bg-gradient-to-r from-[#7f7fd5] via-[#86a8e7] to-[#91eae4] text-white py-2 rounded-full hover:opacity-90 transition font-semibold text-sm shadow"
           >
             Search
           </button>

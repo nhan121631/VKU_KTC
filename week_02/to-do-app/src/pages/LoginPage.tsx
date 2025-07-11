@@ -4,6 +4,7 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 import { useContext } from "react";
 import { login } from "../services";
+
 const schema = yup.object({
   username: yup
     .string()
@@ -14,24 +15,24 @@ const schema = yup.object({
     .min(8, "Mật khẩu phải có ít nhất 8 ký tự")
     .required("Bắt buộc nhập mật khẩu"),
 });
+
 interface IFormInput {
   username: string;
   password: string;
 }
+
 export const LogInPage = () => {
   const { setUser } = useContext(AuthContext);
   const {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm({
+  } = useForm<IFormInput>({
     resolver: yupResolver(schema),
   });
-  const onSubmit: SubmitHandler<IFormInput> = async (data) => {
-    console.log("Form submitted:", data);
 
+  const onSubmit: SubmitHandler<IFormInput> = async (data) => {
     const rs = await login(data.username, data.password);
-    console.log("User logged in:", rs);
     if (rs) {
       const user = {
         id: rs.loggedInUser.id,
@@ -44,25 +45,27 @@ export const LogInPage = () => {
       localStorage.setItem("access_token", user.access_token);
       window.location.href = "/tasks";
     } else {
-      alert("Login failed. Please check your credentials.");
+      alert("Đăng nhập thất bại. Vui lòng kiểm tra lại thông tin.");
     }
   };
 
   return (
-    <div className="flex items-center justify-center h-screen bg-gray-100">
-      <div className="bg-white p-8 rounded-lg shadow-md w-96">
-        <h2 className="text-2xl font-bold mb-6 text-center">Login</h2>
-        <form onSubmit={handleSubmit(onSubmit)}>
-          <div className="mb-4">
-            <label className="block text-sm font-medium mb-2" htmlFor="email">
+    <div className="flex items-center justify-center h-screen" style={{}}>
+      <div className="bg-white p-8 rounded-2xl shadow-2xl w-96">
+        <h2 className="text-3xl font-bold mb-6 text-center text-[#7f7fd5]">
+          Đăng nhập
+        </h2>
+        <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
+          <div>
+            <label className="block text-sm font-medium mb-1" htmlFor="email">
               Email
             </label>
             <input
               type="email"
               id="email"
               {...register("username")}
-              className="w-full px-3 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
-              placeholder="Enter your email"
+              className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#7f7fd5] transition"
+              placeholder="example@email.com"
             />
             {errors.username && (
               <p className="text-red-500 text-sm mt-1">
@@ -70,19 +73,19 @@ export const LogInPage = () => {
               </p>
             )}
           </div>
-          <div className="mb-6">
+          <div>
             <label
-              className="block text-sm font-medium mb-2"
+              className="block text-sm font-medium mb-1"
               htmlFor="password"
             >
-              Password
+              Mật khẩu
             </label>
             <input
               type="password"
               id="password"
               {...register("password")}
-              className="w-full px-3 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
-              placeholder="Enter your password"
+              className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#7f7fd5] transition"
+              placeholder="••••••••"
             />
             {errors.password && (
               <p className="text-red-500 text-sm mt-1">
@@ -92,9 +95,9 @@ export const LogInPage = () => {
           </div>
           <button
             type="submit"
-            className="w-full bg-blue-600 text-white py-2 rounded hover:bg-blue-700 transition duration-200"
+            className="w-full bg-[#7f7fd5] hover:bg-[#6c6cd1] text-white py-2 rounded-full font-semibold transition duration-200"
           >
-            Login
+            Đăng nhập
           </button>
         </form>
       </div>

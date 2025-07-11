@@ -129,7 +129,7 @@ export const OurTasksPage = () => {
               <td className="py-2 px-4">{task.assignee_id}</td>
               <td className="py-2 px-4">
                 <Link to={`/update-task/${task.id}`}>
-                  <button className="bg-blue-500 hover:bg-blue-600 text-white px-3 py-1 rounded text-sm">
+                  <button className="bg-blue-500 hover:bg-blue-600 text-white px-4 py-1.5 rounded-full text-sm shadow-sm transition">
                     Edit
                   </button>
                 </Link>
