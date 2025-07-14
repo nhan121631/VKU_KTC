@@ -1,12 +1,12 @@
 import React from "react";
 import "./App.css";
-import UserProvider from "./Example/UserProvider";
-import { FormInfo } from "./Example/UserForm";
-import type { User } from "./Example/type";
-import { UserList } from "./Example/UserList";
-import { NavBar } from "./Example/Navigation";
+import UserProvider from "./Exam/UserProvider";
+import { FormInfo } from "./Exam/UserForm";
+import type { User } from "./Exam/type";
+import { UserList } from "./Exam/UserList";
+import { NavBar } from "./Exam/Navigation";
 import { BrowserRouter, Route, Routes } from "react-router";
-import { UserDetail } from "./Example/UserDetail";
+import { UserDetail } from "./Exam/UserDetail";
 
 function App() {
   const [users, setUsers] = React.useState<User[]>([]);
