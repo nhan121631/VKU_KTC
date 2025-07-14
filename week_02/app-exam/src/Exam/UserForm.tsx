@@ -38,6 +38,7 @@ export const FormInfo = () => {
   };
   return (
     <form className="max-w-md mx-auto bg-white p-6 rounded-lg shadow space-y-4">
+      <h2 className="text-xl font-bold mb-4 text-center">User Form</h2>
       <div>
         <label className="block mb-1 font-medium">Name:</label>
         <input
