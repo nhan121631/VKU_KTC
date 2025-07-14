@@ -78,7 +78,7 @@ export const FormInfo = () => {
       <button
         type="submit"
         onClick={handleSubmit(onSubmit)}
-        className="w-full bg-blue-600 text-white py-2 rounded hover:bg-blue-700 transition"
+        className="w-full bg-gradient-to-r from-blue-500 to-indigo-500 text-white py-2 rounded-lg font-semibold shadow hover:from-blue-600 hover:to-indigo-600 hover:shadow-lg transition-all duration-200"
       >
         Submit
       </button>

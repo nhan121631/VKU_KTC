@@ -12,11 +12,13 @@ export const UserList = () => {
         <table className="min-w-full bg-white border border-gray-200">
           <thead>
             <tr className="bg-blue-100 text-blue-900">
-              <th className="py-2 px-4 border-b">ID</th>
-              <th className="py-2 px-4 border-b">Name</th>
-              <th className="py-2 px-4 border-b">Email</th>
-              <th className="py-2 px-4 border-b">Age</th>
-              <th className="py-2 px-4 border-b text-center">Actions</th>
+              <th className="py-2 px-4 border-b border-gray-200">ID</th>
+              <th className="py-2 px-4 border-b border-gray-200">Name</th>
+              <th className="py-2 px-4 border-b border-gray-200">Email</th>
+              <th className="py-2 px-4 border-b border-gray-200">Age</th>
+              <th className="py-2 px-4 border-b border-gray-200 text-center">
+                Actions
+              </th>
             </tr>
           </thead>
           <tbody>
@@ -32,13 +34,19 @@ export const UserList = () => {
                   key={user.id}
                   className="hover:bg-blue-50 transition-colors"
                 >
-                  <td className="py-2 px-4 border-b text-center">{user.id}</td>
-                  <td className="py-2 px-4 border-b">{user.name}</td>
-                  <td className="py-2 px-4 border-b">{user.email}</td>
-                  <td className="py-2 px-4 border-b text-center">
+                  <td className="py-2 px-4 border-b border-gray-200 text-center">
+                    {user.id}
+                  </td>
+                  <td className="py-2 px-4 border-b border-gray-200">
+                    {user.name}
+                  </td>
+                  <td className="py-2 px-4 border-b border-gray-200">
+                    {user.email}
+                  </td>
+                  <td className="py-2 px-4 border-b border-gray-200 text-center">
                     {user.age ?? "N/A"}
                   </td>
-                  <td className="py-2 px-4 border-b">
+                  <td className="py-2 px-4 border-b border-gray-200">
                     <Link to={`/users/${user.id}`}>Details</Link>
                   </td>
                 </tr>
