@@ -74,13 +74,6 @@ export const FormInfo = () => {
           <span className="text-red-500 text-sm">{errors.age.message}</span>
         )}
       </div>
-      {/* <div>
-        <input
-          type="text"
-          placeholder="Enter text"
-          className="w-full px-3 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-400"
-        />
-      </div> */}
       <button
         type="submit"
         onClick={handleSubmit(onSubmit)}
