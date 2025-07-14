@@ -21,7 +21,7 @@ export const NavBar = () => {
 
   return (
     <nav
-      className="text-white px-6 py-4 shadow-lg rounded-b-xl"
+      className="text-white px-6 py-4 shadow-lg rounded-b-xl "
       style={{
         background: "linear-gradient(to right, #7f7fd5, #86a8e7, #91eae4)",
       }}
