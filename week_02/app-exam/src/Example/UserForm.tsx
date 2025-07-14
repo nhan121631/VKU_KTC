@@ -13,9 +13,7 @@ const schema = yup
     email: yup.string().email("Invalid email").required("Email is required"),
     age: yup
       .number()
-      .transform((value, originalValue) =>
-        originalValue === "" ? undefined : value
-      )
+      .transform((value, v) => (v === "" ? undefined : value))
       .nullable()
       .notRequired()
       .positive("Age must be positive"),
