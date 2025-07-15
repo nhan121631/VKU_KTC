@@ -28,7 +28,7 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        <header className="bg-gradient-to-r from-[#373b44] to-[#4286f4] shadow">
+        <header className="fixed top-0 left-0 w-full z-50 bg-gradient-to-r from-[#373b44] to-[#4286f4] shadow">
           <nav className="container mx-auto flex items-center justify-between py-4 px-6">
             <div className="text-2xl font-bold text-white drop-shadow">
               My Next App
@@ -78,7 +78,7 @@ export default function RootLayout({
             </ul>
           </nav>
         </header>
-        <main> {children}</main>
+        <main className="pt-24"> {children}</main>
       </body>
     </html>
   );
