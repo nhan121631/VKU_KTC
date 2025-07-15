@@ -6,6 +6,7 @@ export const dynamic = "force-static";
 
 export default async function Page() {
   const tasks = await fetchTask();
+  console.log("tasks", tasks);
   return (
     <div className="bg-white rounded-lg shadow p-6 w-full">
       <Tasks tasks={tasks} />
