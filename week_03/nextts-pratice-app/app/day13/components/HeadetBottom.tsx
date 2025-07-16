@@ -13,7 +13,7 @@ import {
 
 export function HeaderBottom() {
   return (
-    <div className="flex justify-center bg-[#FFD500]">
+    <div className="flex justify-center bg-[#FFD500] ">
       <div className="flex items-center gap-2 hover:bg-white/60 p-3 rounded-t-2xl">
         <IoPhonePortraitOutline />
         <span className="text-sm">Điện thoại</span>

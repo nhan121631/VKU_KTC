@@ -14,6 +14,7 @@ export function HeaderTop() {
           width={250}
           height={40}
           className="object-cover"
+          priority
         />
       </div>
       <div className="flex hover bg-white mx-2 rounded-3xl px-2">
