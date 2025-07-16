@@ -1,5 +1,5 @@
 {
-  "name": "nextts-pratice-app",
+  "name": "next-auth-app",
   "version": "0.1.0",
   "private": true,
   "scripts": {
@@ -10,14 +10,11 @@
   },
   "dependencies": {
     "@hookform/resolvers": "^5.1.1",
-    "@types/js-cookie": "^3.0.6",
-    "js-cookie": "^3.0.5",
     "next": "15.4.1",
     "next-auth": "^4.24.11",
     "react": "19.1.0",
     "react-dom": "19.1.0",
     "react-hook-form": "^7.60.0",
-    "react-icons": "^5.5.0",
     "yup": "^1.6.1"
   },
   "devDependencies": {
