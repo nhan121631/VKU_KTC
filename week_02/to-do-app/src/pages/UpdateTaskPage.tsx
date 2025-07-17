@@ -1,9 +1,10 @@
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
-import { getTaskById, updateTask } from "../services";
+import { updateTask } from "../services";
 import { useNavigate, useParams } from "react-router";
 import { useForm, type SubmitHandler } from "react-hook-form";
 import { useEffect } from "react";
+import apiClient from "../lib/apt-client-sp";
 
 interface IFormInput {
   title: string;
@@ -80,7 +81,7 @@ export const UpdateTaskPage = () => {
   useEffect(() => {
     const fetchTask = async () => {
       try {
-        const task = await getTaskById(id ? parseInt(id) : 0);
+        const task = (await apiClient.get(`/workspaces/tasks/${id}`)) as any;
         reset({
           title: task.title,
           start_date: task.start_date ? task.start_date.split("T")[0] : "",
@@ -100,12 +101,12 @@ export const UpdateTaskPage = () => {
   const onSubmit: SubmitHandler<IFormInput> = async (data: any) => {
     console.log("Form submitted:", data);
     try {
-      await updateTask(id ? parseInt(id) : 0, data);
-      console.log("Task created successfully:", data);
+      await apiClient.patch(`/workspaces/tasks/${id}`, data);
+      console.log("Task updated successfully:", data);
       navigate("/tasks"); // Redirect to tasks page after creation
     } catch (error) {
-      console.error("Error creating task:", error);
-      alert("Failed to create task. Please try again.");
+      console.error("Error updating task:", error);
+      alert("Failed to update task. Please try again.");
     }
   };
 

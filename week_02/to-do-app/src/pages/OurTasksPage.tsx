@@ -1,17 +1,29 @@
 import React, { useEffect } from "react";
 import type { Task } from "../types";
-import { fetchTasks } from "../services";
-import { Link } from "react-router";
+import { Link, useNavigate } from "react-router";
 import SearchTasks from "../components/Fillter";
+import { useAuthStore } from "../useAuthorStore";
+import apiClient from "../lib/apt-client-sp";
+import { RoleAction } from "../components/RoleAction";
 
 export const OurTasksPage = () => {
-  const [tasks, setTasks] = React.useState([]);
+  const { loggedInUser } = useAuthStore((state) => state);
+  const [tasks, setTasks] = React.useState<any[]>([]);
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (!loggedInUser) {
+      console.error("User is not logged in, redirecting to login page...");
+      navigate("/login");
+    }
+  }, [loggedInUser, navigate]);
+
   useEffect(() => {
     const tasks = async () => {
       try {
-        const data = await fetchTasks();
-        setTasks(data);
-        console.log("Tasks fetched successfully:", data);
+        const tasks = (await apiClient.get("/workspaces/tasks")) as any[];
+        setTasks(tasks);
+        console.log("Tasks fetched successfully:", tasks);
       } catch (error) {
         console.error("Error fetching tasks:", error);
       }
@@ -71,9 +83,11 @@ export const OurTasksPage = () => {
             <th className="py-3 px-4 text-left border-b border-gray-200">
               Assigned To
             </th>
-            <th className="py-3 px-4 text-left border-b border-gray-200">
-              Actions
-            </th>
+            <RoleAction>
+              <th className="py-3 px-4 text-left border-b border-gray-200">
+                Actions
+              </th>
+            </RoleAction>
           </tr>
         </thead>
         <tbody>
@@ -127,13 +141,15 @@ export const OurTasksPage = () => {
                   : ""}
               </td>
               <td className="py-2 px-4">{task.assignee_id}</td>
-              <td className="py-2 px-4">
-                <Link to={`/update-task/${task.id}`}>
-                  <button className="bg-[#7f7fd5] hover:bg-[#6c6cd1] text-white px-4 py-1.5 rounded-full text-sm shadow-sm transition">
-                    Edit
-                  </button>
-                </Link>
-              </td>
+              <RoleAction>
+                <td className="py-2 px-4">
+                  <Link to={`/update-task/${task.id}`}>
+                    <button className="bg-[#7f7fd5] hover:bg-[#6c6cd1] text-white px-4 py-1.5 rounded-full text-sm shadow-sm transition">
+                      Edit
+                    </button>
+                  </Link>
+                </td>
+              </RoleAction>
             </tr>
           ))}
         </tbody>

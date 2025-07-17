@@ -1,6 +1,6 @@
-import { useState, useContext } from "react";
+import { useState } from "react";
 import { NavLink } from "react-router";
-import AuthContext from "../../context";
+import { useAuthStore } from "../../useAuthorStore";
 
 const menuItems = [
   { label: "Our Tasks", path: "/tasks" },
@@ -9,13 +9,11 @@ const menuItems = [
 ];
 
 export const NavBar = () => {
-  const { user, setUser } = useContext(AuthContext);
   const [menuOpen, setMenuOpen] = useState(false);
+  const { loggedInUser, logOut } = useAuthStore((state) => state);
 
   const handleLogout = () => {
-    setUser(null);
-    localStorage.removeItem("access_token");
-    localStorage.removeItem("user");
+    logOut();
     window.location.href = "/login";
   };
 
@@ -88,7 +86,7 @@ export const NavBar = () => {
 
         {/* Auth Buttons - Desktop */}
         <div className="hidden md:block">
-          {user ? (
+          {loggedInUser ? (
             <button
               onClick={handleLogout}
               className="bg-white text-[#7f7fd5] px-4 py-2 rounded-full font-semibold hover:bg-blue-100 transition"
@@ -127,7 +125,7 @@ export const NavBar = () => {
             </NavLink>
           ))}
           {/* Auth Buttons - Mobile */}
-          {user ? (
+          {loggedInUser ? (
             <button
               onClick={handleLogout}
               className="w-full bg-white text-[#7f7fd5] px-4 py-2 rounded-full font-semibold hover:bg-blue-100 transition"

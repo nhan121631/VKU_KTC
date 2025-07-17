@@ -1,8 +1,8 @@
 import { useForm, type SubmitHandler } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
-import { createTask } from "../services";
 import { useNavigate } from "react-router";
+import apiClient from "../lib/apt-client-sp";
 
 interface IFormInput {
   title: string;
@@ -76,7 +76,7 @@ export const CreateTaskPage = () => {
   const onSubmit: SubmitHandler<IFormInput> = async (data: any) => {
     console.log("Form submitted:", data);
     try {
-      await createTask(data);
+      await apiClient.post("/workspaces/tasks", data);
       console.log("Task created successfully:", data);
       navigate("/tasks");
     } catch (error) {

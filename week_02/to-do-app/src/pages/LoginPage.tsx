@@ -1,9 +1,9 @@
 import { useForm, type SubmitHandler } from "react-hook-form";
-import AuthContext from "../context";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
-import { useContext } from "react";
-import { login } from "../services";
+import { useNavigate } from "react-router";
+import { useAuthStore } from "../useAuthorStore";
+import { useEffect } from "react";
 
 const schema = yup.object({
   username: yup
@@ -22,31 +22,50 @@ interface IFormInput {
 }
 
 export const LogInPage = () => {
-  const { setUser } = useContext(AuthContext);
+  // const { setUser } = useContext(AuthContext);
+  const navigate = useNavigate();
+  const { login, error, loggedInUser } = useAuthStore((state) => state);
+
+  useEffect(() => {
+    if (loggedInUser) {
+      navigate("/tasks");
+    }
+  }, [loggedInUser, navigate]);
+
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm<IFormInput>({
     resolver: yupResolver(schema),
+    defaultValues: {
+      username: "tungnt@softech.vn",
+      password: "123456789",
+    },
   });
 
   const onSubmit: SubmitHandler<IFormInput> = async (data) => {
-    const rs = await login(data.username, data.password);
-    if (rs) {
-      const user = {
-        id: rs.loggedInUser.id,
-        email: rs.loggedInUser.email,
-        access_token: rs.access_token,
-      };
+    login({
+      username: data.username,
+      password: data.password,
+      navigate: navigate,
+    });
 
-      setUser(user);
-      localStorage.setItem("user", JSON.stringify(user));
-      localStorage.setItem("access_token", user.access_token);
-      window.location.href = "/tasks";
-    } else {
-      alert("Đăng nhập thất bại. Vui lòng kiểm tra lại thông tin.");
-    }
+    // const rs = await login(data.username, data.password);
+    // if (rs) {
+    //   const user = {
+    //     id: rs.loggedInUser.id,
+    //     email: rs.loggedInUser.email,
+    //     access_token: rs.access_token,
+    //   };
+
+    //   setUser(user);
+    //   localStorage.setItem("user", JSON.stringify(user));
+    //   localStorage.setItem("access_token", user.access_token);
+    //   window.location.href = "/tasks";
+    // } else {
+    //   alert("Đăng nhập thất bại. Vui lòng kiểm tra lại thông tin.");
+    // }
   };
 
   return (
@@ -66,6 +85,11 @@ export const LogInPage = () => {
           <h2 className="text-3xl font-bold mb-6 text-center text-[#7f7fd5]">
             Đăng nhập
           </h2>
+          {error && (
+            <p className="text-red-500 text-sm mb-4">
+              {error.message || "Đăng nhập không thành công"}
+            </p>
+          )}
           <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
             <div>
               <label className="block text-sm font-medium mb-1" htmlFor="email">

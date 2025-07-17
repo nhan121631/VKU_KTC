@@ -1,18 +1,21 @@
-import React, { useContext, useEffect } from "react";
-import AuthContext from "../context";
+import React, { useEffect } from "react";
 import type { Task } from "../types";
-import { fetchMyTasks } from "../services";
 import { Link } from "react-router";
 import SearchTasks from "../components/Fillter";
+import { useAuthStore } from "../useAuthorStore";
+import apiClient from "../lib/apt-client-sp";
 
 export const MyTaskPage = () => {
-  const [tasks, setTasks] = React.useState([]);
-  const { user } = useContext(AuthContext);
+  const [tasks, setTasks] = React.useState<Task[]>([]);
+  const { loggedInUser: user } = useAuthStore((state) => state);
+
   console.log("User in MyTaskPage:", user);
   useEffect(() => {
     const MyTasks = async () => {
       try {
-        const data = await fetchMyTasks(user?.id || 0);
+        const data = (await apiClient.get(
+          `/workspaces/tasks/assignee/${user?.id}`
+        )) as any[];
         setTasks(data);
         console.log("My tasks fetched successfully:", data);
       } catch (error) {

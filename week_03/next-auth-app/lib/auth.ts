@@ -19,6 +19,7 @@ export const authOptions: NextAuthOptions = {
   },
   session: {
     strategy: "jwt",
+    // maxAge: 60, // 60 seconds for testing, adjust as needed
   },
   providers: [
    
@@ -77,6 +78,7 @@ export const authOptions: NextAuthOptions = {
       },
     }),
   ],
+  
   callbacks: {
     
     async jwt({ token, user} : { token: JWT; user: User }) {
