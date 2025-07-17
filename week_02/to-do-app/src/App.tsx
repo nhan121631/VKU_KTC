@@ -4,17 +4,14 @@ import { NavBar } from "./components/Navbar";
 import { LogInPage } from "./pages/LoginPage";
 import { AccessDeniedPage } from "./pages/AccessDeniedPage";
 import { OurTasksPage } from "./pages/OurTasksPage";
-import React, { useEffect } from "react";
-import type { User } from "./types";
 import { MyTaskPage } from "./pages/MyTasksPage";
-import AuthContext from "./context";
 import { CreateTaskPage } from "./pages/CreateTaskPage";
 import { UpdateTaskPage } from "./pages/UpdateTaskPage";
-import LoadingPage from "./pages/LoadingPage";
+// import LoadingPage from "./pages/LoadingPage";
 import { PrivateRoute } from "./PrivateRoute";
 
 function App() {
-  const [user, setUser] = React.useState<User | null>(null);
+  // const [user, setUser] = React.useState<User | null>(null);
   // const [isLoading, setIsLoading] = React.useState(true);
 
   // useEffect(() => {
