@@ -28,7 +28,7 @@ export const LogInPage = () => {
 
   useEffect(() => {
     if (loggedInUser) {
-      navigate("/tasks");
+      navigate("/home");
     }
   }, [loggedInUser, navigate]);
 
@@ -39,7 +39,7 @@ export const LogInPage = () => {
   } = useForm<IFormInput>({
     resolver: yupResolver(schema),
     defaultValues: {
-      username: "tungnt@softech.vn",
+      username: "nhan@mail.com",
       password: "123456789",
     },
   });

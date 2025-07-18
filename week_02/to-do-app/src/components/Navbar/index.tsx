@@ -1,6 +1,8 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { useState } from "react";
 import { NavLink } from "react-router";
 import { useAuthStore } from "../../useAuthorStore";
+import routes from "../../routes";
 
 const menuItems = [
   { label: "Our Tasks", path: "/tasks" },
@@ -11,7 +13,8 @@ const menuItems = [
 export const NavBar = () => {
   const [menuOpen, setMenuOpen] = useState(false);
   const { loggedInUser, logOut } = useAuthStore((state) => state);
-
+  const userRoles: string[] =
+    loggedInUser?.roles?.map((role: any) => role.code?.toLowerCase()) || [];
   const handleLogout = () => {
     logOut();
     window.location.href = "/login";
@@ -65,23 +68,39 @@ export const NavBar = () => {
 
         {/* Desktop Menu */}
         <ul className="hidden md:flex space-x-6">
-          {menuItems.map((item) => (
-            <li key={item.path}>
-              <NavLink
-                to={item.path}
-                className={({ isActive }) =>
-                  `block px-4 py-2 rounded-full text-base font-medium transition-all duration-300
-                 ${
-                   isActive
-                     ? "bg-white text-[#7f7fd5] shadow-md"
-                     : "hover:bg-white hover:text-[#7f7fd5] hover:shadow"
-                 }`
-                }
-              >
-                {item.label}
-              </NavLink>
-            </li>
-          ))}
+          {routes.map((route) => {
+            if (route.showOnMenu === false) {
+              return null;
+            }
+            const routeRoles: string[] =
+              route.roles?.map((role: string) => role?.toLowerCase()) || [];
+            const hasAccess = userRoles.some((role: string) => {
+              return (
+                role === "administrators" ||
+                routeRoles.includes(role?.toLowerCase())
+              );
+            });
+            if (!hasAccess) {
+              return null; // Skip routes that the user does not have access to
+            }
+            return (
+              <li key={route.path}>
+                <NavLink
+                  to={route.path}
+                  className={({ isActive }) =>
+                    `block px-4 py-2 rounded-full text-base font-medium transition-all duration-300
+                   ${
+                     isActive
+                       ? "bg-white text-[#7f7fd5] shadow-md"
+                       : "hover:bg-white hover:text-[#7f7fd5] hover:shadow"
+                   }`
+                  }
+                >
+                  {route.name}
+                </NavLink>
+              </li>
+            );
+          })}
         </ul>
 
         {/* Auth Buttons - Desktop */}
