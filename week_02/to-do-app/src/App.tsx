@@ -58,7 +58,14 @@ function App() {
               </PrivateRoute>
             }
           />
-          <Route path="/update-task/:id" element={<UpdateTaskPage />} />
+          <Route
+            path="/update-task/:id"
+            element={
+              <PrivateRoute>
+                <UpdateTaskPage />
+              </PrivateRoute>
+            }
+          />
           {/* Private */}
           {/* {user && <Route path="/tasks" element={<OurTasksPage />} />}
             {user && <Route path="/assignee-me" element={<MyTaskPage />} />}

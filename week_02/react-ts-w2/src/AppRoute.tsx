@@ -17,6 +17,9 @@ import { BtnAfternoonDay8 } from "./Practice/Day08/Afternoon/BtnAffterNoon08";
 import { FormTwo } from "./Practice/Day08/Afternoon/FormTwo";
 import { FormThree } from "./Practice/Day08/Afternoon/FormThree";
 import { HomeWork08 } from "./Practice/Day08/Homework";
+import { TestMapPage } from "./Practice/TestCode/TestMapPage";
+import { TestUpImagePage } from "./Practice/TestCode/TestUpImagePage";
+import TestSocket from "./Practice/TestCode/TestSocket";
 
 export const AppRoute = () => {
   return (
@@ -44,6 +47,9 @@ export const AppRoute = () => {
           </Route>
           <Route path="homework" element={<HomeWork08 />} />
         </Route>
+        {/* <Route path="testcode" element={<TestMapPage />} /> */}
+        {/* <Route path="testupimage" element={<TestUpImagePage />} /> */}
+        <Route path="testsocket" element={<TestSocket />} />
       </Route>
     </Routes>
   );
