@@ -4,6 +4,7 @@ import { LogInPage } from "../pages/LoginPage";
 import { MyTaskPage } from "../pages/MyTasksPage";
 import { OurTasksPage } from "../pages/OurTasksPage";
 import RolePage from "../pages/RolePage";
+import { UpdateTaskPage } from "../pages/UpdateTaskPage";
 import UserPage from "../pages/UserPage";
 
 const routes = [
@@ -64,6 +65,14 @@ const routes = [
     index: false,
     element: <RolePage />,
     roles: ["Administrators"],
+  },
+  {
+    path: "update-task/:id",
+    showOnMenu: false,
+    element: <UpdateTaskPage />,
+    roles: ["Managers"],
+    name: "Update Task",
+    index: false,
   },
 ];
 
