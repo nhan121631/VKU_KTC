@@ -8,7 +8,7 @@ export interface Product {
   category: string;
 }
 
-interface Item {
+export interface Item {
     product: Product;
     quantity: number;
 }
