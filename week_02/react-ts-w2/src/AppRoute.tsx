@@ -48,8 +48,8 @@ export const AppRoute = () => {
           <Route path="homework" element={<HomeWork08 />} />
         </Route>
         {/* <Route path="testcode" element={<TestMapPage />} /> */}
-        {/* <Route path="testupimage" element={<TestUpImagePage />} /> */}
-        <Route path="testsocket" element={<TestSocket />} />
+        <Route path="testupimage" element={<TestUpImagePage />} />
+        {/* <Route path="testsocket" element={<TestSocket />} /> */}
       </Route>
     </Routes>
   );
