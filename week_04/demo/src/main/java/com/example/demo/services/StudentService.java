@@ -4,11 +4,16 @@ import java.util.List;
 
 import org.springframework.stereotype.Service;
 
+import com.example.demo.dtos.CourseResponseDto;
 import com.example.demo.dtos.CreateStudentRequestDto;
+import com.example.demo.dtos.DepartmentResponseDto;
 import com.example.demo.dtos.StudentResponseDto;
 import com.example.demo.dtos.UpdateStudentRequestDto;
+import com.example.demo.entities.Course;
+import com.example.demo.entities.Department;
 import com.example.demo.entities.Student;
 import com.example.demo.repositories.StudentJpaRepository;
+import com.example.demo.repositories.StudentProjection;
 
 @Service
 public class StudentService {
@@ -18,12 +23,30 @@ public class StudentService {
         this.studentJpaRepository = studentJpaRepository;
     }
 
+    public CourseResponseDto toResponseDto(Course course) {
+        return CourseResponseDto.builder()
+                .id(course.getId())
+                .name(course.getName())
+                .build();
+    }
+
+    public DepartmentResponseDto toDepartmentResponseDto(Department department) {
+        return DepartmentResponseDto.builder()
+                .id(department.getId())
+                .name(department.getName())
+                .build();
+    }
+
     public StudentResponseDto convertDto(Student student) {
         return StudentResponseDto.builder()
                 .id(student.getId())
                 .name(student.getName())
                 .email(student.getEmail())
                 .address(student.getAddress())
+                .department(student.getDepartment() != null ? toDepartmentResponseDto(student.getDepartment()) : null)
+                .courses(student.getCourses() != null ? student.getCourses().stream()
+                        .map(this::toResponseDto)
+                        .toList() : null)
                 .build();
     }
 
@@ -72,4 +95,21 @@ public class StudentService {
                 .orElseThrow(() -> new RuntimeException("Student not found with id: " + id));
         studentJpaRepository.deleteById(id);
     }
+
+    public StudentProjection getStudentByEmail(String email) {
+        StudentProjection student = studentJpaRepository.findByEmail(email);
+        if (student == null) {
+            throw new RuntimeException("Student not found with email: " + email);
+        }
+        return student;
+    }
+
+    public StudentResponseDto getStudentByName(String name) {
+        Student student = studentJpaRepository.findByName(name);
+        if (student == null) {
+            throw new RuntimeException("Student not found with name: " + name);
+        }
+        return convertDto(student);
+    }
+
 }

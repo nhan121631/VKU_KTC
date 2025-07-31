@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.example.demo.dtos.CreateStudentRequestDto;
 import com.example.demo.dtos.StudentResponseDto;
 import com.example.demo.dtos.UpdateStudentRequestDto;
+import com.example.demo.repositories.StudentProjection;
 import com.example.demo.services.StudentService;
 
 import jakarta.validation.Valid;
@@ -52,7 +53,16 @@ public class StudentController {
 
     @DeleteMapping("/{id}")
     public void deleteStudent(@PathVariable("id") Long id) {
-    studentService.deleteStudent(id);
+        studentService.deleteStudent(id);
     }
 
+    @GetMapping("/email/{email}")
+    public StudentProjection getStudentByEmail(@PathVariable("email") String email) {
+        return studentService.getStudentByEmail(email);
+    }
+
+    @GetMapping("/name/{name}")
+    public StudentResponseDto getStudentByName(@PathVariable("name") String name) {
+        return studentService.getStudentByName(name);
+    }
 }
