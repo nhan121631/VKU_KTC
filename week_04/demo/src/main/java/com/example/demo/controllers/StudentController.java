@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.example.demo.dtos.CreateStudentRequestDto;
+import com.example.demo.dtos.StudentPageResponseDto;
 import com.example.demo.dtos.StudentResponseDto;
 import com.example.demo.dtos.UpdateStudentRequestDto;
 import com.example.demo.repositories.StudentProjection;
@@ -19,6 +20,7 @@ import com.example.demo.services.StudentService;
 import jakarta.validation.Valid;
 
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 @RestController
 @RequestMapping("/api/students")
@@ -33,6 +35,13 @@ public class StudentController {
     @GetMapping
     public List<StudentResponseDto> getAllStudents() {
         return studentService.getAllStudents();
+    }
+
+    @GetMapping("/paging")
+    public StudentPageResponseDto getStudentPaginated(
+            @RequestParam(name = "pageNumber", defaultValue = "1") int pageNumber,
+            @RequestParam(name = "pageSize", defaultValue = "5") int pageSize) {
+        return studentService.getStudentPaginated(pageNumber, pageSize);
     }
 
     @GetMapping("/{id}")
@@ -65,4 +74,5 @@ public class StudentController {
     public StudentResponseDto getStudentByName(@PathVariable("name") String name) {
         return studentService.getStudentByName(name);
     }
+
 }

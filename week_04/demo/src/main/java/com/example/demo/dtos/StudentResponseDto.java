@@ -18,5 +18,4 @@ public class StudentResponseDto {
     private String address;
     private List<CourseResponseDto> courses;
     private DepartmentResponseDto department;
-
 }

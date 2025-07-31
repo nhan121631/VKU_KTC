@@ -22,5 +22,4 @@ public interface StudentJpaRepository extends JpaRepository<Student, Long> {
     @QueryHints(@QueryHint(name = "org.hibernate.cacheable", value = "true"))
     @EntityGraph(attributePaths = { "department", "courses" })
     Student findByName(String name);
-
 }

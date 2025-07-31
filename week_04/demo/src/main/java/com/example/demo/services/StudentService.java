@@ -2,11 +2,15 @@ package com.example.demo.services;
 
 import java.util.List;
 
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import com.example.demo.dtos.CourseResponseDto;
 import com.example.demo.dtos.CreateStudentRequestDto;
 import com.example.demo.dtos.DepartmentResponseDto;
+import com.example.demo.dtos.StudentPageResponseDto;
 import com.example.demo.dtos.StudentResponseDto;
 import com.example.demo.dtos.UpdateStudentRequestDto;
 import com.example.demo.entities.Course;
@@ -54,6 +58,7 @@ public class StudentService {
         List<StudentResponseDto> students = studentJpaRepository.findAll().stream()
                 .map(this::convertDto)
                 .toList();
+
         return students;
     }
 
@@ -112,4 +117,21 @@ public class StudentService {
         return convertDto(student);
     }
 
+    public StudentPageResponseDto getStudentPaginated(int pageNumber, int pageSize) {
+        Pageable pageable = PageRequest.of(pageNumber, pageSize);
+        Page<Student> studentPage = studentJpaRepository.findAll(pageable);
+        List<StudentResponseDto> studentDtos = studentPage.getContent().stream()
+                .map(this::convertDto)
+                .toList();
+
+        return StudentPageResponseDto.builder()
+                .data(studentDtos)
+                .pageNumber(studentPage.getNumber())
+                .pageSize(studentPage.getSize())
+                .totalRecords(studentPage.getTotalElements())
+                .totalPages(studentPage.getTotalPages())
+                .hasNext(studentPage.hasNext())
+                .hasPrevious(studentPage.hasPrevious())
+                .build();
+    }
 }
