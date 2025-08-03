@@ -68,9 +68,9 @@ public class UserService {
                         .email(user.getUserProfile().getEmail())
                         .address(user.getUserProfile().getAddress())
                         .build() : null)
-                .roles(user.getRoles() != null ? user.getRoles().stream()
-                        .map(Role::getName)
-                        .toList() : null)
+                .roles(user.getRoles() != null
+                        ? user.getRoles().stream().map(Role::getName).toList()
+                        : null)
                 .accessToken(accessToken)
                 .refreshToken(refreshToken)
                 .build();
