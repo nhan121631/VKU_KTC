@@ -14,7 +14,7 @@ export default async function Page() {
       </div>
     );
   }
-  const response = await await fetch(
+  const response =  await fetch(
     "https://server.aptech.io/workspaces/tasks",
     {
       headers: {

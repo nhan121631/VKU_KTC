@@ -34,7 +34,7 @@ public class SecurityConfig {
                                                 .authenticationEntryPoint(this.customAuthenticationEntryPoint)
                                                 .accessDeniedHandler(this.customAccessDeniedHandler))
                                 .authorizeHttpRequests(auth -> auth.requestMatchers("/api/auth/**").permitAll()
-                                                .requestMatchers("/api/students/**").hasAnyRole("Administrators")
+                                                .requestMatchers("/api/students/**").hasAnyRole("Administrators", "Students","Teachers")
                                                 .anyRequest().authenticated())
                                 .addFilterBefore(jwtAuthenticationFilter, UsernamePasswordAuthenticationFilter.class);
 
