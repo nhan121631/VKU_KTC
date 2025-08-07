@@ -5,17 +5,17 @@ on:
     branches:
       - main
     paths:
-      - "react-ts-app/week_02/to-do-app/**"
+      - "week_02/to-do-app/**"
   pull_request:
     branches:
       - main
     paths:
-      - "react-ts-app/week_02/to-do-app/**"
+      - "week_02/to-do-app/**"
   workflow_dispatch:
 
 env:
   NODE_VERSION: "18"
-  PROJECT_DIR: "react-ts-app/week_02/to-do-app"
+  PROJECT_DIR: "week_02/to-do-app"
 
 jobs:
   build-and-deploy:
