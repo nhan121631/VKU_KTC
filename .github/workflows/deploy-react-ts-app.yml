@@ -1,0 +1,75 @@
+name: Deploy React TypeScript App to Netlify
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - "react-ts-app/week_02/to-do-app/**"
+  pull_request:
+    branches:
+      - main
+    paths:
+      - "react-ts-app/week_02/to-do-app/**"
+  workflow_dispatch:
+
+env:
+  NODE_VERSION: "18"
+  PROJECT_DIR: "react-ts-app/week_02/to-do-app"
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+
+      - name: Clear npm cache
+        working-directory: ${{ env.PROJECT_DIR }}
+        run: npm cache clean --force
+
+      - name: Remove existing node_modules and package-lock.json
+        working-directory: ${{ env.PROJECT_DIR }}
+        run: |
+          rm -rf node_modules
+          rm -f package-lock.json
+
+      - name: Install dependencies with clean install
+        working-directory: ${{ env.PROJECT_DIR }}
+        run: npm install --no-optional
+
+      - name: Install Rollup dependencies explicitly
+        working-directory: ${{ env.PROJECT_DIR }}
+        run: npm install @rollup/rollup-linux-x64-gnu --save-dev
+
+      - name: Reinstall all dependencies
+        working-directory: ${{ env.PROJECT_DIR }}
+        run: npm install
+
+      # - name: Run ESLint
+      #   working-directory: ${{ env.PROJECT_DIR }}
+      #   run: npm run lint
+
+      # - name: Type check
+      #   working-directory: ${{ env.PROJECT_DIR }}
+      #   run: npx tsc --noEmit
+
+      - name: Build project
+        working-directory: ${{ env.PROJECT_DIR }}
+        run: npm run build
+
+      - name: Deploy to Netlify
+        uses: nwtgck/actions-netlify@v3.0
+        with:
+          publish-dir: "${{ env.PROJECT_DIR }}/dist"
+          production-branch: main
+          deploy-message: "Deploy from GitHub Actions"
+        env:
+          NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
+          NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
