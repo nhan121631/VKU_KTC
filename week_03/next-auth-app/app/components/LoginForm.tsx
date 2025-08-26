@@ -60,6 +60,7 @@ export default function LoginForm({
     });
     console.log("handleLoginProvider", res);
     if (!res?.error) {
+      console.log("Login successful:", res);
       console.log("callbackurl: ", callbackUrl);
       router.push(callbackUrl);
     } else {
