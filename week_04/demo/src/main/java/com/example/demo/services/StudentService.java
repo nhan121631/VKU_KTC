@@ -2,6 +2,11 @@ package com.example.demo.services;
 
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.CacheEvict;
+import org.springframework.cache.annotation.CachePut;
+import org.springframework.cache.annotation.Cacheable;
+import org.springframework.cache.annotation.Caching;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
@@ -16,12 +21,16 @@ import com.example.demo.dtos.UpdateStudentRequestDto;
 import com.example.demo.entities.Course;
 import com.example.demo.entities.Department;
 import com.example.demo.entities.Student;
+import com.example.demo.repositories.DepartmentJpaRepository;
 import com.example.demo.repositories.StudentJpaRepository;
 import com.example.demo.repositories.StudentProjection;
 
 @Service
 public class StudentService {
     private StudentJpaRepository studentJpaRepository;
+
+    @Autowired
+    private DepartmentJpaRepository departmentJpaRepository;
 
     public StudentService(StudentJpaRepository studentJpaRepository) {
         this.studentJpaRepository = studentJpaRepository;
@@ -54,7 +63,10 @@ public class StudentService {
                 .build();
     }
 
+    // Cache cho danh sách tất cả students
+    @Cacheable(value = "allStudents", key = "'all'")
     public List<StudentResponseDto> getAllStudents() {
+        System.out.println("Cache miss: Fetching all students from the database");
         List<StudentResponseDto> students = studentJpaRepository.findAll().stream()
                 .map(this::convertDto)
                 .toList();
@@ -62,18 +74,20 @@ public class StudentService {
         return students;
     }
 
+    // Cache cho từng student - sử dụng positional parameter
+    @Cacheable(value = "student", key = "#a0")
     public StudentResponseDto getStudentById(Long id) {
+        if (id == null) {
+            throw new IllegalArgumentException("Student ID cannot be null");
+        }
+        System.out.println("Cache miss: Fetching student with id: " + id);
         return studentJpaRepository.findById(id)
                 .map(this::convertDto)
                 .orElseThrow(() -> new RuntimeException("Student not found with id: " + id));
     }
 
-    // public Student getStudentById(Long id) {
-    // return studentJpaRepository.findById(id).orElse(null);
-    // }.name(student.getName()).email(student.getEmail()).address(student.getAddress()).build()).toList();
-
-    // }
-
+    // Create student - cache individual và evict all students
+    @Caching(put = @CachePut(value = "student", key = "#result.id"), evict = @CacheEvict(value = "allStudents", key = "'all'"))
     public StudentResponseDto createStudent(CreateStudentRequestDto createStudentRequestDto) {
         Student student = new Student();
         student.setName(createStudentRequestDto.getName());
@@ -81,10 +95,16 @@ public class StudentService {
         student.setAddress(createStudentRequestDto.getAddress());
         student.setPassword(createStudentRequestDto.getPassword());
 
+        Department department = departmentJpaRepository.findById(createStudentRequestDto.getDepartmentId())
+                .orElseThrow(() -> new RuntimeException("Department not found"));
+        student.setDepartment(department);
+
         Student savedStudent = studentJpaRepository.save(student);
         return convertDto(savedStudent);
     }
 
+    // Update student - cache updated student và evict all students
+    @Caching(put = @CachePut(value = "student", key = "#result.id"), evict = @CacheEvict(value = "allStudents", key = "'all'"))
     public StudentResponseDto updateStudent(Long id, UpdateStudentRequestDto student) {
         Student existingStudent = studentJpaRepository.findById(id)
                 .orElseThrow(() -> new RuntimeException("Student not found with id: " + id));
@@ -95,12 +115,18 @@ public class StudentService {
         return convertDto(studentJpaRepository.save(existingStudent));
     }
 
+    // Delete student - evict specific student và all students list
+    @Caching(evict = {
+            @CacheEvict(value = "student", key = "#a0"), // Sửa từ #id thành #a0
+            @CacheEvict(value = "allStudents", key = "'all'")
+    })
     public void deleteStudent(Long id) {
         studentJpaRepository.findById(id)
                 .orElseThrow(() -> new RuntimeException("Student not found with id: " + id));
         studentJpaRepository.deleteById(id);
     }
 
+    // Không cache projection vì thường chỉ dùng cho authentication
     public StudentProjection getStudentByEmail(String email) {
         StudentProjection student = studentJpaRepository.findByEmail(email);
         if (student == null) {
@@ -109,6 +135,8 @@ public class StudentService {
         return student;
     }
 
+    // Cache theo name - sử dụng positional parameter để đồng nhất
+    @Cacheable(value = "studentByName", key = "#a0") // Sửa từ #name thành #a0
     public StudentResponseDto getStudentByName(String name) {
         Student student = studentJpaRepository.findByName(name);
         if (student == null) {
@@ -117,6 +145,7 @@ public class StudentService {
         return convertDto(student);
     }
 
+    // Không cache pagination vì data thay đổi thường xuyên
     public StudentPageResponseDto getStudentPaginated(int pageNumber, int pageSize) {
         Pageable pageable = PageRequest.of(pageNumber, pageSize);
         Page<Student> studentPage = studentJpaRepository.findAll(pageable);

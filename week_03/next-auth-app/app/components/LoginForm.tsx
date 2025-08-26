@@ -60,7 +60,7 @@ export default function LoginForm({
     });
     console.log("handleLoginProvider", res);
     if (!res?.error) {
-      console.log(callbackUrl);
+      console.log("callbackurl: ", callbackUrl);
       router.push(callbackUrl);
     } else {
       setError("invalid email or password");

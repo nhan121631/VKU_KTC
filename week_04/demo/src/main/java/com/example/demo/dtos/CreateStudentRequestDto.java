@@ -2,6 +2,7 @@ package com.example.demo.dtos;
 
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -25,5 +26,8 @@ public class CreateStudentRequestDto {
 
     @NotBlank(message = "Password is mandatory")
     private String password;
+
+    @NotNull(message = "Department ID is mandatory")
+    private Long departmentId;
 
 }
