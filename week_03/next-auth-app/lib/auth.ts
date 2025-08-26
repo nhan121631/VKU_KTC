@@ -22,7 +22,6 @@ export const authOptions: NextAuthOptions = {
     // maxAge: 60, // 60 seconds for testing, adjust as needed
   },
   providers: [
-   
     CredentialsProvider({
       name: "Sign in",
       credentials: {
@@ -79,6 +78,19 @@ export const authOptions: NextAuthOptions = {
     }),
   ],
   
+  // Fix session cookie for production (Vercel)
+  cookies: {
+    sessionToken: {
+      name: `__Secure-next-auth.session-token`,
+      options: {
+        httpOnly: true,
+        sameSite: "lax",
+        path: "/",
+        secure: true, // Bắt buộc true trên Vercel/https
+        // domain: ".vercel.app", // Nếu dùng custom domain thì sửa lại cho đúng
+      },
+    },
+  },
   callbacks: {
     
     async jwt({ token, user} : { token: JWT; user: User }) {
