@@ -1,12 +1,11 @@
 "use client";
 
-import { useForm, type SubmitHandler } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
-import * as yup from "yup";
-import React, { useState } from "react";
-import { useRouter } from "next/navigation";
-import { useSearchParams } from "next/navigation";
 import { signIn, useSession } from "next-auth/react";
+import { useRouter, useSearchParams } from "next/navigation";
+import React, { useState } from "react";
+import { useForm, type SubmitHandler } from "react-hook-form";
+import * as yup from "yup";
 const schema = yup.object({
   username: yup
     .string()

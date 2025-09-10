@@ -3,6 +3,8 @@ import { getCsrfToken } from "next-auth/react";
 import LoginForm from "../components/LoginForm";
 import Image from "next/image";
 import { Suspense } from "react";
+import { getServerSession } from "next-auth";
+import { authOptions } from "@/lib/auth";
 
 export const metadata: Metadata = {
   title: "Login",
@@ -10,6 +12,9 @@ export const metadata: Metadata = {
 };
 
 export default async function Page() {
+  const session = await getServerSession(authOptions);
+  console.log("Session test:", session);
+
   const csrfToken = await getCsrfToken();
   return (
     <div className="flex items-center justify-center h-screen bg-gradient-to-br from-[#e3f2fd] to-[#f1f5ff] px-4">
