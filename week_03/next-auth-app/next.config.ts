@@ -1,14 +1,12 @@
-import type { NextConfig } from "next";
+// import type { NextConfig } from "next";
 
-const nextConfig: NextConfig = {
-       env: {
-            JWT_SECRET: 'myCatfly200miles',
-            // NEXTAUTH_SECRET: '4b5jMM1qXd+1/gv2eZ320qltFCrTGVG/qtsLbKMG+Go=',
-            NEXTAUTH_SECRET: 'my_ultra_secure_nextauth_secret',
-            AUTH_SECRET: '4b5jMM1qXd+1/gv2eZ320qltFCrTGVG/qtsLbKMG+Go=',
-            // NEXTAUTH_URL: 'http://localhost:3000'
-             NEXTAUTH_URL: 'https://vku-ktc-c84c.vercel.app'
-        },
-};
+// const nextConfig: NextConfig = {
+//        env: {
+//             JWT_SECRET: 'myCatfly200miles',
+//             NEXTAUTH_SECRET: '4b5jMM1qXd+1/gv2eZ320qltFCrTGVG/qtsLbKMG+Go=',
+//             AUTH_SECRET: '4b5jMM1qXd+1/gv2eZ320qltFCrTGVG/qtsLbKMG+Go=',
+//             NEXTAUTH_URL: 'http://localhost:3000'
+//         },
+// };
 
-export default nextConfig;
+// export default nextConfig;
